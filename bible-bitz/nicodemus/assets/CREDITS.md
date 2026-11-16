@@ -24,3 +24,16 @@ All artworks are public domain or CC0. No paid credits used.
 
 Fonts (Google Fonts, SIL Open Font License): Anton, Playfair Display, Caveat.
 Paper backgrounds, grain, torn edges and tags are made with code.
+
+## Added for the gallery look (stills v2)
+
+| File | Title | Artist, date | Source | License |
+|---|---|---|---|---|
+| frame_gloria_a.jpg | "Carta Gloria" Frame | Leandro Gagliardi, 1765/66 | https://www.artic.edu/artworks/38106 | CC0 |
+| frame_gloria_b.jpg | "Carte Gloria" Frame | Leandro Gagliardi, 1765/66 | https://www.artic.edu/artworks/150999 | CC0 |
+| velvet_b.jpg | Fragment of Velvet, mid-15th to early 16th century | | https://www.artic.edu/artworks/1995 | CC0 |
+| velvet_a.jpg | Velvet, 1600/50 | | https://www.artic.edu/artworks/2045 | CC0 |
+| paneling.jpg | Upper Paneling from a Sacristy Armoire, c. 1460-75 | | Cleveland Museum of Art, 1915.526 | CC0 |
+| looking_glass.jpg | Looking Glass, 1790-1810 | | https://www.artic.edu/artworks/14763 | CC0 |
+
+Extra fonts (Google Fonts, SIL Open Font License): Bowlby One, Cinzel.

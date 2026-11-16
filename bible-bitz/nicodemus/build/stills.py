@@ -92,10 +92,14 @@ def s4():
     finish(c, 4).save(f'{OUT}/s4_burial.jpg', quality=92)
 
 
-if __name__ == '__main__':
+def _main():
     for f in (s1, s2, s3, s4): f()
     ims = [Image.open(f'{OUT}/{n}') for n in sorted(os.listdir(OUT)) if n.startswith('s')]
     sheet = Image.new('RGB', (W * 4 // 2 + 50, H // 2 + 20), (30, 30, 30))
     for i, im in enumerate(ims):
         sheet.paste(im.resize((W // 2, H // 2)), (10 + i * (W // 2 + 10), 10))
     sheet.save(f'{OUT}/contact_sheet.jpg', quality=88)
+
+
+if __name__ == '__main__':
+    _main()

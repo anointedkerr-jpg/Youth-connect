@@ -175,7 +175,7 @@ def glow_word(txt, size, fill=(246, 240, 228)):
 def write_video(frames_fn, n, name):
     path = os.path.join(OUT, name)
     p = subprocess.Popen(['ffmpeg', '-v', 'error', '-y', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-s', f'{W}x{H}',
-                          '-r', str(FPS), '-i', '-', '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '19',
+                          '-r', str(FPS), '-i', '-', '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '23',
                           '-preset', 'medium', '-movflags', '+faststart', path], stdin=subprocess.PIPE)
     for i in range(n):
         p.stdin.write(np.asarray(frames_fn(i).convert('RGB')).tobytes())
@@ -191,11 +191,9 @@ def scene_cat(secs=5.0):
     bg = ImageEnhance.Brightness(bg).enhance(0.8)
     s = (H * 1.12) / bg.height
     bg = bg.resize((int(bg.width * s), int(bg.height * s)), Image.LANCZOS).filter(ImageFilter.GaussianBlur(3.2))
-    cut = load('kittl_cut/s03_cat_scare.png')
-    jump = cut.crop((0, 0, 1215, 1888)); a = np.asarray(jump.getchannel('A')).copy(); a[1440:, 869:] = 0
-    jump.putalpha(Image.fromarray(a)); jump = jump.crop(jump.getbbox())
-    cat = cut.crop((869, 1440, 1281, 2006)); cat = cat.crop(cat.getbbox())
-    walk = load('kittl_cut/s01_rooftop_lantern.png')
+    jump = load('kittl_cut2/s03_cat_scare.png')
+    cat = load('kittl_cut2/cat.png')
+    walk = load('kittl_cut2/s01_rooftop_lantern.png')
     walk = relight(walk, light=(0.72, 0.62))      # lantern in his right hand
     jump = relight(jump, light=(0.12, 0.42))      # lantern raised on the left
     cat = relight(cat, light=(0.0, 0.3), ambient=(0.55, 0.6, 0.8), warm=(1.1, 0.95, 0.8), reach=1.4)
@@ -302,7 +300,7 @@ def scene_rooftop(secs=5.0):
     city = city_strip(); s = (W * 1.45) / city.width
     city = city.resize((int(city.width * s), int(city.height * s)), Image.LANCZOS).filter(ImageFilter.GaussianBlur(2.0))
     ledge = roof_ledge().filter(ImageFilter.GaussianBlur(4))
-    man = relight(load('kittl_cut/s01_rooftop_lantern.png'), light=(0.72, 0.62))
+    man = relight(load('kittl_cut2/s01_rooftop_lantern.png'), light=(0.72, 0.62))
     T = secs; FLOOR = 1640; hm = 1050
 
     def man_anim(t):
@@ -330,7 +328,110 @@ def scene_rooftop(secs=5.0):
     return write_video(frame, int(T * FPS), 'test_rooftop.mp4')
 
 
+# ---------- scene: awake in bed ----------
+def scene_bed(secs=5.0, bgname='caiaphas_niche'):
+    bg = load(f'bg/{bgname}.jpg').convert('L') if bgname != 'caiaphas_niche' else None
+    if bgname == 'veronica_interior':
+        # left frame of the stereo pair, stone vault only (no chapel figures), floor extended in darkness
+        vault = bg.crop((60, 70, 860, 630))
+        bg = Image.new('L', (800, 1000), 18)
+        bg.paste(vault, (0, 0))
+        g = np.asarray(bg, dtype=np.float32); yy = np.arange(1000)[:, None]
+        fade = np.clip((yy - 430) / 170, 0, 1)
+        g = g * (1 - fade) + 22 * fade
+        bg = Image.fromarray(g.astype(np.uint8))
+    elif bgname == 'caiaphas_niche':
+        bg = load('bg/caiaphas_court.jpg').convert('L').crop((70, 420, 560, 1250))   # arched alcove, stone floor
+    else:
+        bg = bg.crop((40, 40, bg.width - 40, bg.height - 40))
+    bg = night_grade(bg, warm_spot=(0.25, 0.75, 0.35), strength=0.45)
+    bg = ImageEnhance.Brightness(bg).enhance(0.95)
+    s = max((H * 1.1) / bg.height, (W * 1.1) / bg.width)
+    bg = bg.resize((int(bg.width * s), int(bg.height * s)), Image.LANCZOS).filter(ImageFilter.GaussianBlur(2.2))
+    bed = relight(load('kittl_cut2/s02_awake_in_bed.png'), light=(0.08, 0.32), reach=1.1,
+                  ambient=(0.5, 0.56, 0.78), warm=(1.12, 0.92, 0.68))
+    T = secs; FLOOR = 1700; bw = 1100
+    bh = bw * bed.height / bed.width
+    lamp = (W / 2 - bw / 2 + bw * 0.06, FLOOR - bh + bh * 0.33)
+    marks = [glow_word('?', 170 + 30 * i, (246, 222, 150)) for i in range(3)]
+
+    def bed_anim(t):
+        return {'dy': 2 * math.sin(t * 1.3)}          # slow breathing
+
+    layers = [Layer(bg.convert('RGBA'), W / 2, H / 2, depth=0.0),
+              Layer(bed, W / 2, FLOOR - bh / 2, h=bh, depth=0.55, anim=bed_anim, shadow=True)]
+    dust = dust_layer(45, 11)
+    head = (W / 2 - bw / 2 + bw * 0.38, FLOOR - bh + bh * 0.12)
+
+    def frame(i):
+        t = i / FPS
+        k = ease(t / T)
+        f = render_frame(layers, {'zoom': 1.0 + 0.1 * k, 'panx': 30 * k, 'pany': 25 * k}, t, i)
+        # moonlight shaft from the upper right, and the oil-lamp flicker on the left
+        f = add_light(f, light_pool(W * 0.85, H * 0.2, 420, (120, 150, 230)), 0.35)
+        f = add_light(f, light_pool(lamp[0], lamp[1], 300), 0.5 + 0.14 * math.sin(t * 12) + 0.07 * math.sin(t * 27))
+        for j, m in enumerate(marks):                   # question marks rise one after another
+            u = t - 0.8 - j * 1.0
+            if u <= 0: continue
+            a = min(1, u / 0.3) * max(0, 1 - max(0, u - 2.2) / 0.6)
+            if a <= 0: continue
+            mm = m.copy(); mm.putalpha(mm.getchannel('A').point(lambda v: int(v * a)))
+            mm = mm.rotate(8 * math.sin(u * 2 + j), resample=Image.BICUBIC, expand=True)
+            x = head[0] + (j - 1) * 170 + 20 * math.sin(u * 1.7 + j)
+            y = head[1] - 230 - u * 130
+            f.alpha_composite(mm, (int(x - mm.width / 2), int(y - mm.height / 2)))
+        f.alpha_composite(dust(t))
+        return grain(vignette(f, 0.75), 8, i)
+    return write_video(frame, int(T * FPS), 'test_awake_in_bed.mp4')
+
+
+# ---------- scene: burial at the Garden Tomb ----------
+def sunset_grade(im):
+    a = np.asarray(im.convert('RGB'), dtype=np.float32)
+    a = a * np.array([1.08, 0.9, 0.68]) * 0.78
+    lum = a.mean(-1, keepdims=True)
+    a = lum + (a - lum) * 0.7
+    return Image.fromarray(np.clip(a, 0, 255).astype(np.uint8))
+
+
+def scene_burial(secs=5.0):
+    bg = load('bg/garden_tomb_color.jpg').crop((620, 0, 1920, 1100))   # rock face and tomb door, no railings
+    bg = sunset_grade(bg)
+    s = (H * 1.1) / bg.height
+    bg = bg.resize((int(bg.width * s), int(bg.height * s)), Image.LANCZOS).filter(ImageFilter.GaussianBlur(3.5))
+    men = relight(load('kittl_cut2/s06_burial_two_men.png'), light=(-0.2, 0.3), reach=1.6,
+                  ambient=(0.7, 0.66, 0.66), warm=(1.12, 0.98, 0.82))
+    jar = lambda n, h: relight(load(f'cut/{n}.png'), light=(-0.3, 0.2), reach=2.0, ambient=(0.55, 0.5, 0.46), warm=(0.95, 0.82, 0.66))
+    T = secs; FLOOR = 1640; hm = 1080
+
+    def men_anim(t):
+        return {'dy': 2 * math.sin(t * 1.1)}
+
+    layers = [Layer(bg.convert('RGBA'), W / 2 + 40, H / 2, depth=0.0),
+              Layer(men, 650, FLOOR - hm / 2, h=hm, depth=0.55, anim=men_anim, shadow=True),
+              Layer(jar('jar', 0), 150, FLOOR + 20, h=420, depth=0.85, shadow=True),
+              Layer(jar('ointment_jar', 0), 360, FLOOR + 110, h=300, depth=0.9, shadow=True),
+              Layer(jar('roman_glass_jar', 0), 960, FLOOR + 80, h=340, depth=0.9, shadow=True)]
+    dust = dust_layer(55, 21)
+    word = glow_word('TWO MEN', 150); word2 = glow_word('SHOW UP.', 110, (236, 178, 56))
+
+    def frame(i):
+        t = i / FPS
+        k = ease(t / T)
+        f = render_frame(layers, {'zoom': 1.0 + 0.08 * k, 'panx': -35 * k, 'pany': -10 * k}, t, i)
+        f = add_light(f, light_pool(-80, 420, 650, (255, 175, 90)), 0.45)    # low sun from the left
+        f.alpha_composite(dust(t))
+        if t > 0.8:
+            a = min(1, (t - 0.8) / 0.15); w = word.copy(); w.putalpha(w.getchannel('A').point(lambda v: int(v * a)))
+            f.alpha_composite(w, (int(W / 2 - w.width / 2), 200))
+        if t > 1.3:
+            a = min(1, (t - 1.3) / 0.15); w = word2.copy(); w.putalpha(w.getchannel('A').point(lambda v: int(v * a)))
+            f.alpha_composite(w, (int(W / 2 - w.width / 2), 370))
+        return grain(vignette(f, 0.6), 7, i)
+    return write_video(frame, int(T * FPS), 'test_burial.mp4')
+
+
 if __name__ == '__main__':
     which = sys.argv[1:] or ['cat']
     for w in which:
-        print({'cat': scene_cat, 'rooftop': scene_rooftop}[w]())
+        print({'cat': scene_cat, 'rooftop': scene_rooftop, 'bed': scene_bed, 'burial': scene_burial}[w]())

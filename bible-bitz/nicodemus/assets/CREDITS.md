@@ -71,3 +71,4 @@ Character cutouts in `kittl_cut/` were cut from the Kittl images with rembg (fre
 |---|---|---|---|
 | kittl/s02_awake_in_bed_v2.png | Nicodemus awake in a whole wooden bed, plain background | Kittl, Nano Banana 2.1 2K, 20 tokens | Replaces the head-only bed cutout |
 | kittl_cut2/*.png | Character cutouts | Kittl background removal (standard, free) | Cleaner than the local rembg cutouts. The stray sandal in s03 was erased; cat.png comes from the earlier local cutout |
+| bg/caiaphas_court.jpg | Interior court of House of Caiaphas, Mt. Zion (Matson Collection, LOC matpc.14448) | https://commons.wikimedia.org/wiki/File:Interior_court_of_House_of_Caiaphus,_Mt._Zion_LOC_matpc.14448.jpg | Public domain |

@@ -1,7 +1,7 @@
 # Bible Bitz: Nicodemus (Kerrone's script)
 
 Scripture quoted from the King James Version. About 135 spoken lines, so roughly 2.5 to 3 minutes.
-The words below are Kerrone's, unchanged. Suggested fixes are listed at the bottom and are not applied.
+The words below are Kerrone's, with the five suggested fixes applied (see the list at the bottom).
 
 ## COLD OPEN
 Visual: rooftops at night. A hooded figure with a lantern, looking over his shoulder like a spy.
@@ -39,14 +39,14 @@ At night. (John 3:2)
 Real brave, Nicodemus.
 Real bold.
 He opens with a compliment:
-"Rabbi, we know thou art a teacher come from God."
+"Rabbi, we know that thou art a teacher come from God."
 Butter him up first.
 Jesus skips the small talk.
 "Ye must be born again." (John 3:3, 3:7)
 Visual: record scratch. A loading spinner over his head.
 
 ## CUT HIM SOME SLACK
-Now. Preachers love roasting him for this.
+Now. People love roasting him for this.
 But let's be fair.
 First, the night thing.
 Put yourself in his shoes.
@@ -57,8 +57,8 @@ Maybe fear. Maybe privacy.
 Either way, he came.
 Second, the question.
 "Can he enter the second time into his mother's womb?" (John 3:4)
-Nobody had heard "born again" before.
-Nobody.
+"Born again" was a strange thing to hear.
+Even for a teacher.
 And the Greek word Jesus used? Anōthen.
 It means "again."
 It also means "from above."
@@ -79,7 +79,7 @@ Not a body do-over.
 A new birth, by the Spirit. (John 3:5 to 6)
 A new start, from the inside.
 Visual: a gray heart turning bright.
-And in this same conversation,
+And in this same chapter,
 we get John 3:16.
 "For God so loved the world…"
 That verse.
@@ -130,8 +130,8 @@ So next time you hear people
 roast Nicodemus,
 remember the spices.
 And cut the man some slack.
-This is Bible Bitz.
-The things Things you may have missed. See you next time
+This is Bible Bitz:
+things you may have missed. See you next time
 
 ---
 
@@ -162,11 +162,13 @@ The things Things you may have missed. See you next time
 | Takeaway | Three cards | Type scene, three framed cards |
 | Sign-off | Bible Bitz | Type scene |
 
-## Suggested fixes (not applied)
+## Fixes applied
 
 1. "Preachers love roasting him" - your Bible Bitz rule is to say "people," not "preachers."
 2. "Rabbi, we know thou art a teacher come from God." - the KJV reads "we know **that** thou art a teacher come from God" (John 3:2).
-3. "Nobody had heard 'born again' before. Nobody." - the text does not say this, and in John 3:10 Jesus seems surprised that Israel's teacher does not understand. Softer: "It was a strange thing to hear."
-4. "In this same conversation, we get John 3:16." - many scholars read John 3:16 as John's own comment, not Jesus still speaking. "In this same chapter" is safe either way.
+3. "Nobody had heard 'born again' before. Nobody." - the text does not say this, and in John 3:10 Jesus seems surprised that Israel's teacher does not understand. Now: "'Born again' was a strange thing to hear. Even for a teacher."
+4. "In this same conversation, we get John 3:16." - many scholars read John 3:16 as John's own comment, not Jesus still speaking. Now "in this same chapter," which is safe either way.
 5. Last line: "The things Things you may have missed" has a typo. Your tagline is "Bible Bitz: things you may have missed."
+Still to do in the edit, not a script change:
+
 6. Lines that are opinion or guesswork and get a small on-screen label: "A killer beard, probably," "Maybe fear. Maybe privacy," "Around seventy-five of ours" (maths from the Roman pound), "honor fit for a king."

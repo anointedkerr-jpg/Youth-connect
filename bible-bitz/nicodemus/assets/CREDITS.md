@@ -64,3 +64,10 @@ Extra fonts (Google Fonts, SIL Open Font License): Bowlby One, Cinzel.
 | bg/stars.jpg | Stars and Milky Way over Åbyfjorden 4 | https://commons.wikimedia.org/wiki/File:Stars_and_Milky_Way_over_Åbyfjorden_4.jpg | CC0 |
 
 Character cutouts in `kittl_cut/` were cut from the Kittl images with rembg (free, local).
+
+## Second round (Kittl)
+
+| File | What | Tool | Notes |
+|---|---|---|---|
+| kittl/s02_awake_in_bed_v2.png | Nicodemus awake in a whole wooden bed, plain background | Kittl, Nano Banana 2.1 2K, 20 tokens | Replaces the head-only bed cutout |
+| kittl_cut2/*.png | Character cutouts | Kittl background removal (standard, free) | Cleaner than the local rembg cutouts. The stray sandal in s03 was erased; cat.png comes from the earlier local cutout |

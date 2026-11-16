@@ -50,3 +50,17 @@ Extra fonts (Google Fonts, SIL Open Font License): Bowlby One, Cinzel.
 | kittl/s04_council_facepalm.png | Council member facepalm | Kittl, Nano Banana 2.1 2K, 20 tokens | Nicodemus image as style reference |
 | kittl/s05_spice_sack.png | Under a giant sack of spices | Kittl, Nano Banana 2.1 2K, 20 tokens | Nicodemus image as reference |
 | kittl/s06_burial_two_men.png | Joseph and Nicodemus at the tomb | Kittl, Nano Banana 2.1 2K, 20 tokens | Both character images as references |
+
+## Real photo backgrounds (2.5D motion)
+
+| File | Title | Source | License |
+|---|---|---|---|
+| bg/arched_street_a.jpg | Arched street scene in old city, Jerusalem (Matson Collection, LOC matpc.11797) | https://commons.wikimedia.org/wiki/File:Arched_street_scene_in_old_city,_Jerusalem_LOC_matpc.11797.jpg | Public domain |
+| bg/arched_street_b.jpg | Arched street scene in Old City, Jerusalem (Matson Collection, LOC matpc.05389) | https://commons.wikimedia.org/wiki/File:Arched_street_scene_in_Old_City,_Jerus._(i.e.,_Jerusalem)_LOC_matpc.05389.jpg | Public domain |
+| bg/jerusalem_from_olives.jpg | View of Jerusalem from the Mount of Olives (Matson Collection, LOC matpc.15013) | https://commons.wikimedia.org/wiki/File:View_of_Jerusalem_from_the_Mount_of_Olives_LOC_matpc.15013.jpg | Public domain |
+| bg/garden_tomb_color.jpg | Jerusalem Garden Tomb (43300924231) | https://commons.wikimedia.org/wiki/File:Jerusalem_Garden_Tomb_(43300924231).jpg | CC0 |
+| bg/garden_tomb_old.jpg | Garden tomb (Matson Collection, LOC matpc.12187) | https://commons.wikimedia.org/wiki/File:Garden_tomb_LOC_matpc.12187.jpg | Public domain |
+| bg/tomb_interior.jpg | Interior of Garden Tomb (Matson Collection, LOC matpc.08481) | https://commons.wikimedia.org/wiki/File:Interior_of_Garden_Tomb_LOC_matpc.08481.jpg | Public domain |
+| bg/stars.jpg | Stars and Milky Way over Åbyfjorden 4 | https://commons.wikimedia.org/wiki/File:Stars_and_Milky_Way_over_Åbyfjorden_4.jpg | CC0 |
+
+Character cutouts in `kittl_cut/` were cut from the Kittl images with rembg (free, local).

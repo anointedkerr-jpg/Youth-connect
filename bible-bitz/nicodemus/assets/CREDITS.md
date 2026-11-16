@@ -37,3 +37,9 @@ Paper backgrounds, grain, torn edges and tags are made with code.
 | looking_glass.jpg | Looking Glass, 1790-1810 | | https://www.artic.edu/artworks/14763 | CC0 |
 
 Extra fonts (Google Fonts, SIL Open Font License): Bowlby One, Cinzel.
+
+## Generated (Kittl)
+
+| File | What | Tool | Notes |
+|---|---|---|---|
+| kittl/nicodemus_fullbody_01.png | Nicodemus, head to toe, character reference | Kittl, Nano Banana 2.1 2K, 20 tokens | Tissot's Nicodemus used as costume reference |

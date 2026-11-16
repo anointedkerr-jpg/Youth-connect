@@ -43,3 +43,10 @@ Extra fonts (Google Fonts, SIL Open Font License): Bowlby One, Cinzel.
 | File | What | Tool | Notes |
 |---|---|---|---|
 | kittl/nicodemus_fullbody_01.png | Nicodemus, head to toe, character reference | Kittl, Nano Banana 2.1 2K, 20 tokens | Tissot's Nicodemus used as costume reference |
+| kittl/joseph_fullbody_01.png | Joseph of Arimathea, head to toe | Kittl, Nano Banana 2.1 2K, 20 tokens | Tissot's Joseph and the Nicodemus image as references |
+| kittl/s01_rooftop_lantern.png | Rooftops at night with a lantern | Kittl, Nano Banana 2.1 2K, 20 tokens | Nicodemus image as reference |
+| kittl/s02_awake_in_bed.png | Awake in bed | Kittl, Nano Banana 2.1 2K, 20 tokens | Nicodemus image as reference |
+| kittl/s03_cat_scare.png | Cat scare in the street | Kittl, Nano Banana 2.1 2K, 20 tokens | Nicodemus image as reference |
+| kittl/s04_council_facepalm.png | Council member facepalm | Kittl, Nano Banana 2.1 2K, 20 tokens | Nicodemus image as style reference |
+| kittl/s05_spice_sack.png | Under a giant sack of spices | Kittl, Nano Banana 2.1 2K, 20 tokens | Nicodemus image as reference |
+| kittl/s06_burial_two_men.png | Joseph and Nicodemus at the tomb | Kittl, Nano Banana 2.1 2K, 20 tokens | Both character images as references |

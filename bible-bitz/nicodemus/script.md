@@ -1,68 +1,172 @@
-# Bible Bitz: Nicodemus
+# Bible Bitz: Nicodemus (Kerrone's script)
 
-Short form, 9:16, about 60 seconds spoken. Scripture quoted from the King James Version.
-Spine: And, But, Therefore, But, Therefore.
+Scripture quoted from the King James Version. About 135 spoken lines, so roughly 2.5 to 3 minutes.
+The words below are Kerrone's, unchanged. Suggested fixes are listed at the bottom and are not applied.
 
-## Hook options
+## COLD OPEN
+Visual: rooftops at night. A hooded figure with a lantern, looking over his shoulder like a spy.
 
-- **A (used below):** "A hundred pounds of spices. For one burial."
-- **B:** "He met Jesus in the dark. Then buried Him in daylight."
+A powerful man.
+A controversial rabbi.
+One secret meeting.
+At night.
+And one question
+people still roast him for.
+Today on Bible Bitz: Nicodemus.
+The Pharisee who broke ranks.
 
-## Script and shot list
+## WHO IS HE?
+Visual: Jerusalem collage. A well-dressed figure gets nods from other leaders. Magazine cover: "Top 10 Most Influential Pharisees."
 
-`VO` is what Kerrone says. `Screen` is the big text. Lines marked *guess* or *maths* are not scripture and are labelled that way on screen.
+Meet Nicodemus.
+A Pharisee. A ruler of the Jews. (John 3:1)
+Think Supreme Court judge
+meets celebrity pastor.
+Power. Respect.
+A killer beard, probably.
+But he had a problem.
+He'd been watching Jesus.
+The miracles. The teaching.
+The other leaders said "troublemaker."
+Nicodemus wasn't so sure.
+Visual: him in bed, wide awake, question marks overhead.
 
-| # | Beat | VO line | Screen text | Visual | Verse |
-|---|---|---|---|---|---|
-| 1 | Hook | A hundred pounds. | A HUNDRED POUNDS | Jar slams onto mustard paper, letters drop in | John 19:39 |
-| 2 | Hook | Of spices. | OF SPICES. | Myrrh and aloe plates slide in from the sides | John 19:39 |
-| 3 | Hook | For one burial. | FOR ONE BURIAL | Push in on the jar | |
-| 4 | Hook | Who brings that? | WHO BRINGS THAT? | Host cutout, eyebrow up | |
-| 5 | And | Nicodemus. | NICODEMUS | Big-head Nicodemus drops in, name tag sticks on | John 3:1 |
-| 6 | And | Pharisee. Ruler. | PHARISEE / RULER | Two small tags slap on | John 3:1 |
-| 7 | And | Big man in town. | BIG MAN. | Council painting behind him | John 3:1 |
-| 8 | And | He visits Jesus. | HE VISITS JESUS | Moonrise painting taped to the wall | John 3:2 |
-| 9 | And | At night. | AT NIGHT. | Wall goes dark blue | John 3:2 |
-| 10 | Aside | Why night? | WHY NIGHT? | Host cutout | |
-| 11 | Aside | John never says. | JOHN NEVER SAYS | Host shrugs | |
-| 12 | Aside | My guess? Nosy neighbours. | *GUESS:* NOSY NEIGHBOURS | Paper eyes peek over a wall | *guess* |
-| 13 | But | Jesus says: | JESUS SAYS | Tanner's rooftop painting, tags on both men | John 3:3 |
-| 14 | But | "Be born again." | "BORN AGAIN" | Italic serif word on red paper | John 3:3 |
-| 15 | But | Born... again? | Born... AGAIN? | Nicodemus head tilts | John 3:4 |
-| 16 | But | "When he is old?" | "...WHEN HE IS OLD?" | Push in on Nicodemus | John 3:4 |
-| 17 | But | Israel's teacher. Stumped. | ISRAEL'S TEACHER. STUMPED. | Etching of the two at the table | John 3:10 |
-| 18 | Therefore | So he goes quiet. | QUIET. | Nicodemus slides off the page | |
-| 19 | But | But the council wants Jesus. | THE COUNCIL WANTS JESUS | Sanhedrin painting, red circle drawn on | John 7:45-49 |
-| 20 | But | One voice speaks up. | ONE VOICE | Nicodemus pops up at the back | John 7:50 |
-| 21 | But | "Hear him first." | "DOTH OUR LAW JUDGE ANY MAN, BEFORE IT HEAR HIM?" | Quote on a paper scrap | John 7:51 |
-| 22 | But | They snap back. | THEY SNAP BACK | Council cutouts lean in | John 7:52 |
-| 23 | But | "You from Galilee too?" | "ART THOU ALSO OF GALILEE?" | Quote scrap | John 7:52 |
-| 24 | Therefore | Quiet again. | QUIET. AGAIN. | Nicodemus sinks down | |
-| 25 | Low point | Then the cross. | THEN THE CROSS | Black card. Music out. | John 19 |
-| 26 | Low point | The disciples scatter. | THEY ALL FLED | Empty page, tags fall off | Mark 14:50 |
-| 27 | But | But two men show up. | TWO MEN SHOW UP | Joseph and Nicodemus cutouts drop in | John 19:38-39 |
-| 28 | But | Joseph. Secret disciple. | JOSEPH. SECRET DISCIPLE. | Tag on Joseph | John 19:38 |
-| 29 | But | And Nicodemus. | AND NICODEMUS | Tag on Nicodemus | John 19:39 |
-| 30 | Payoff | Carrying myrrh and aloes. | MYRRH AND ALOES | Plates and jar return | John 19:39 |
-| 31 | Payoff | A hundred pounds. | A HUNDRED POUNDS | Letters slam back | John 19:39 |
-| 32 | Aside | About 75 of ours. | *MATHS:* ABOUT 75 LB TODAY | Host cutout, small note | *maths* |
-| 33 | Payoff | Enough for a king. | ENOUGH FOR A KING | Jars stack up | *opinion* |
-| 34 | Ending | He came in the dark. | HE CAME IN THE DARK | Night wall, moon | John 3:2 |
-| 35 | Ending | He left carrying spices. | HE LEFT CARRYING SPICES | Burial scene, daylight paper | John 19:39 |
-| 36 | Sign-off | Bible Bitz: things you may have missed. | BIBLE BITZ | Title card | |
+## THE MIDNIGHT MEETING
+Visual: him sneaking through the streets. A cat meows and he nearly jumps out of his sandals.
 
-Ending style: callback to the hook plus a vivid image.
+So he visits Jesus.
+At night. (John 3:2)
+Real brave, Nicodemus.
+Real bold.
+He opens with a compliment:
+"Rabbi, we know thou art a teacher come from God."
+Butter him up first.
+Jesus skips the small talk.
+"Ye must be born again." (John 3:3, 3:7)
+Visual: record scratch. A loading spinner over his head.
 
-## Fact check
+## CUT HIM SOME SLACK
+Now. Preachers love roasting him for this.
+But let's be fair.
+First, the night thing.
+Put yourself in his shoes.
+His seat. His name. His friends.
+All on the line.
+The Bible doesn't say why he came at night.
+Maybe fear. Maybe privacy.
+Either way, he came.
+Second, the question.
+"Can he enter the second time into his mother's womb?" (John 3:4)
+Nobody had heard "born again" before.
+Nobody.
+And the Greek word Jesus used? Anōthen.
+It means "again."
+It also means "from above."
+Same word. Two meanings.
+So of course he asked.
+Visual: newspaper headline, "Local Pharisee Asks Completely Reasonable Question, Gets Roasted for Eternity."
+We only know the answer
+because we've heard it a thousand times.
+He was hearing it once.
+He's not slow.
+He's processing.
 
-- John 3:1-2 (KJV): "a man of the Pharisees, named Nicodemus, a ruler of the Jews: The same came to Jesus by night."
-- John 3:3-4: "Except a man be born again, he cannot see the kingdom of God." / "How can a man be born when he is old?"
-- John 3:10: "Art thou a master of Israel, and knowest not these things?"
-- John 7:50-52: "Doth our law judge any man, before it hear him, and know what he doeth?" / "Art thou also of Galilee?"
-- Mark 14:50: "And they all forsook him, and fled."
-- John 19:38: Joseph of Arimathaea, "a disciple of Jesus, but secretly for fear of the Jews."
-- John 19:39: Nicodemus "brought a mixture of myrrh and aloes, about an hundred pound weight."
-- Maths, not scripture: the pound here is the Roman pound, roughly 327 g, so a hundred is about 33 kg or 72 to 75 modern pounds.
-- Guess, not scripture: John does not say why he came at night.
-- Opinion, not scripture: "enough for a king."
-- VO lines 21 and 23 paraphrase; the screen shows the KJV wording.
+## THE CONVERSATION
+Visual: the two seated, one oil lamp, quiet mood.
+
+Jesus explains.
+Not a body do-over.
+A new birth, by the Spirit. (John 3:5 to 6)
+A new start, from the inside.
+Visual: a gray heart turning bright.
+And in this same conversation,
+we get John 3:16.
+"For God so loved the world…"
+That verse.
+Born in a late-night chat.
+
+## THE REST OF THE STORY
+Visual: title card, "LATER."
+
+Does he become a disciple overnight?
+Nope.
+He goes quiet for a while.
+Then the leaders want Jesus arrested.
+Nicodemus stands up.
+"Doth our law judge any man,
+before it hear him?" (John 7:51)
+Visual: a council member facepalms.
+Not a sermon.
+A point of order.
+But it was something.
+They mock him for it. (John 7:52)
+
+Then the cross.
+The disciples had scattered. (Mark 14:50)
+And who helps bury Jesus?
+Joseph of Arimathea.
+And Nicodemus. (John 19:38 to 39)
+Carrying myrrh and aloes.
+About a hundred pounds.
+Around seventy-five of ours.
+Visual: him struggling under a giant sack of spices.
+That's not a gift basket.
+That's honor fit for a king.
+The man who came at night
+now stands in the open.
+
+## THE TAKEAWAY
+Visual: three cards appear.
+
+Questions are okay.
+His honest question opened the door.
+Faith can grow slowly.
+Night visit. Then a defense. Then the burial.
+Courage can grow too.
+Scared on day one.
+Faithful at the darkest hour.
+
+So next time you hear people
+roast Nicodemus,
+remember the spices.
+And cut the man some slack.
+This is Bible Bitz.
+The things Things you may have missed. See you next time
+
+---
+
+## Shot plan (gallery look, reference style 7)
+
+"Have" means real public-domain art already in `assets/`. "Staged" means built as collage from those cutouts plus a real prop. "Needs a decision" means no free artwork shows it.
+
+| Section | Scene | How it gets made |
+|---|---|---|
+| Cold open | Hooded figure with lantern on rooftops | Staged: Tanner's rooftop painting full bleed, Tissot's hooded Nicodemus in front, a real Roman oil lamp (Art Institute of Chicago, CC0). Looking over his shoulder: needs a decision |
+| Cold open | Title: "NICODEMUS" | Have: gallery wall still |
+| Who is he | Jerusalem collage, leaders nodding | Have: Tissot council and Ge's Sanhedrin in gilt frames |
+| Who is he | Magazine cover "Top 10 Most Influential Pharisees" | Staged: typeset cover around Tissot's portrait |
+| Who is he | In bed, wide awake, question marks | Needs a decision. Free option: his portrait in the dark, eyes lit, question marks drifting up |
+| Midnight meeting | Sneaking through streets, cat | Staged: night painting, his cutout, a Steinlen cat (public domain). The jump is motion on the cutout |
+| Midnight meeting | "Ye must be born again", loading spinner | Have: Tanner in gilt frame, spinner drawn over his head |
+| Slack | His seat, his name, his friends | Have: council painting, three things drop away |
+| Slack | Anōthen, two meanings | Type scene: the Greek word splits into "again" and "from above" |
+| Slack | Newspaper headline | Staged: typeset front page with his portrait |
+| Conversation | Two seated, one oil lamp | Have: de Jode's etching "Christ and Nicodemus: A Night Piece" |
+| Conversation | Gray heart turning bright | Staged: Egyptian heart amulet (CC0), gray to gold |
+| Conversation | John 3:16 | Type scene in a gilt frame |
+| Rest of story | "LATER." card | Type scene |
+| Rest of story | He stands up, facepalm | Have: Sanhedrin painting. Facepalm: needs a decision |
+| Rest of story | The cross | Public-domain crucifixion painting, kept dark and brief |
+| Rest of story | Joseph and Nicodemus, myrrh and aloes | Have: burial still |
+| Rest of story | Struggling under a giant sack | Needs a decision. Free option: jars piling up around him |
+| Takeaway | Three cards | Type scene, three framed cards |
+| Sign-off | Bible Bitz | Type scene |
+
+## Suggested fixes (not applied)
+
+1. "Preachers love roasting him" - your Bible Bitz rule is to say "people," not "preachers."
+2. "Rabbi, we know thou art a teacher come from God." - the KJV reads "we know **that** thou art a teacher come from God" (John 3:2).
+3. "Nobody had heard 'born again' before. Nobody." - the text does not say this, and in John 3:10 Jesus seems surprised that Israel's teacher does not understand. Softer: "It was a strange thing to hear."
+4. "In this same conversation, we get John 3:16." - many scholars read John 3:16 as John's own comment, not Jesus still speaking. "In this same chapter" is safe either way.
+5. Last line: "The things Things you may have missed" has a typo. Your tagline is "Bible Bitz: things you may have missed."
+6. Lines that are opinion or guesswork and get a small on-screen label: "A killer beard, probably," "Maybe fear. Maybe privacy," "Around seventy-five of ours" (maths from the Roman pound), "honor fit for a king."

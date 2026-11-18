@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+bible-bitz/nicodemus/render/
+bible-bitz/nicodemus/motion_tests/*.mp4
+bible-bitz/nicodemus/audio/mix_raw.wav

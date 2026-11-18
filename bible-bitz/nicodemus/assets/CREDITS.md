@@ -72,3 +72,14 @@ Character cutouts in `kittl_cut/` were cut from the Kittl images with rembg (fre
 | kittl/s02_awake_in_bed_v2.png | Nicodemus awake in a whole wooden bed, plain background | Kittl, Nano Banana 2.1 2K, 20 tokens | Replaces the head-only bed cutout |
 | kittl_cut2/*.png | Character cutouts | Kittl background removal (standard, free) | Cleaner than the local rembg cutouts. The stray sandal in s03 was erased; cat.png comes from the earlier local cutout |
 | bg/caiaphas_court.jpg | Interior court of House of Caiaphas, Mt. Zion (Matson Collection, LOC matpc.14448) | https://commons.wikimedia.org/wiki/File:Interior_court_of_House_of_Caiaphus,_Mt._Zion_LOC_matpc.14448.jpg | Public domain |
+| raw/zurbaran_crucifixion.jpg | The Crucifixion, Francisco de Zurbarán, 1627 | https://www.artic.edu/artworks/80084 | CC0 |
+
+## Audio
+
+| File | What | Source | License |
+|---|---|---|---|
+| audio/voiceover_original.wav | Kerrone's voiceover | Supplied by Kerrone | Owned |
+| audio/voiceover_final.wav | Same voiceover, long pauses trimmed to ~0.25 s, 6% faster (pitch kept), levelled | Made here | Owned |
+| audio/sfx_src/cat_meow.oga | Meow of a pleading cat | https://commons.wikimedia.org/wiki/File:Meow_of_a_pleading_cat.oga | Public domain |
+| audio/sfx_src/footsteps_cc0.wav | Footsteps | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Grendelkhan-footsteps.wav | CC0 |
+| (synthesized in build/sfx.py) | Booms, whooshes, risers, heartbeat, clock, shimmer, record scratch, crickets, wind, crowd murmur, drones | Made here with code | Owned |

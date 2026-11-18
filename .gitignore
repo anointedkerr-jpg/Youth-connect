@@ -25,3 +25,4 @@ dist-ssr
 bible-bitz/nicodemus/render/
 bible-bitz/nicodemus/motion_tests/*.mp4
 bible-bitz/nicodemus/audio/mix_raw.wav
+__pycache__/

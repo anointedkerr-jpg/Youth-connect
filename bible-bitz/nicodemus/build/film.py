@@ -110,6 +110,44 @@ def serif(txt, size=110, col=WHITE):
     return S2.glow_text(txt, CINZEL(size), col, glow=14)
 
 
+
+# ---------------- channel logo ----------------
+_logo = None
+
+
+def logo_card(w=820):
+    """Kerrone's Bible Bitz logo printed on a cream torn-paper card, so it reads on dark scenes."""
+    global _logo
+    if _logo is None:
+        lg = Image.open(os.path.join(os.path.dirname(ROOT), 'brand', 'bible_bitz_logo.png')).convert('RGBA')
+        lg = lg.crop(lg.getbbox())
+        s = (w - 120) / lg.width; lg = lg.resize((int(lg.width * s), int(lg.height * s)), Image.LANCZOS)
+        from engine import torn_card
+        card = torn_card(lg.width + 120, lg.height + 120, (238, 226, 198), seed=5, rough=9)
+        card.alpha_composite(lg, (60, 60))
+        g = grain(card, 8, 3); g.putalpha(card.getchannel('A'))
+        _logo = g
+    return _logo
+
+
+def logo_reveal(f, t, t0, cx=W / 2, cy=H / 2 - 60, w=820):
+    """Reveal: flash of light, card slams in from big and tilted, settles with a little bounce."""
+    if t < t0: return f
+    u = t - t0
+    card = logo_card(w)
+    k = min(1, u / 0.22)
+    sc = 1.45 - 0.45 * ease(k) + (0.04 * math.sin((u - 0.22) * 18) * math.exp(-(u - 0.22) * 6) if u > 0.22 else 0)
+    rot = -9 * (1 - ease(k))
+    im = card.resize((int(card.width * sc), int(card.height * sc)), Image.BILINEAR).rotate(rot, resample=Image.BICUBIC, expand=True)
+    if k < 1:
+        im = im.copy(); im.putalpha(im.getchannel('A').point(lambda v: int(v * k)))
+    if u < 0.5:   # flash
+        f = add_light(f, light_pool(cx, cy, 700, (255, 236, 190)), 0.9 * (1 - u / 0.5))
+    sh = M.rim_shadow(im, 26, 0.7)
+    f.alpha_composite(sh, (int(cx - im.width / 2 + 20), int(cy - im.height / 2 + 28)))
+    f.alpha_composite(im, (int(cx - im.width / 2), int(cy - im.height / 2)))
+    return f
+
 # ---------------- backgrounds ----------------
 def fill(im, scale=1.12, blur=0):
     im = im.convert('RGB'); s = max(W * scale / im.width, H * scale / im.height)
@@ -241,7 +279,7 @@ def build_scenes():
     def title_extra(f, t):
         pass
     add(10.38, 12.6, layers=lambda: [bgL(bg_painting('tissot_nicodemus', None, 0.6, 2))],
-        cam=push(0.06), words=[(10.45, big('BIBLE BITZ', 150, GOLD), W / 2, 380), (11.52, serif('things you may have missed', 52), W / 2, 1180)])
+        cam=push(0.06), logo_at=10.38)
     # 6a Pharisee, ruler
     add(12.6, 15.0, layers=lambda: [bgL(bg_court()), L(nic(), 640, 1640 - 560, h=1120, depth=0.6, anim=walk_in(-200, dur=1.2))],
         cam=push(0.08, -20), verse='JOHN 3:1')
@@ -325,7 +363,7 @@ def build_scenes():
         words=[(105.64, big('FAITH', 140, GOLD), 700, 460), (107.1, big('COURAGE', 130, GOLD), 680, 620)])
     # 37 Bible Bitz end title
     add(108.3, 110.14, layers=lambda: [bgL(bg_painting('tissot_nicodemus', None, 0.6, 2))],
-        cam=push(0.05), words=[(108.3, big('BIBLE BITZ', 150, GOLD), W / 2, 380), (109.14, serif('things you may have missed', 52), W / 2, 1180)])
+        cam=push(0.05), logo_at=108.3)
     # 38 like & subscribe / more people
     add(110.14, 118.4, kind='outro')
     return sc
@@ -479,7 +517,7 @@ def whip(img, k, direction=1):
 def render_scene(i):
     scenes = build_scenes(); s = dict(scenes[i]); s0 = s['s']
     s['s'], s['e'] = T(s['s']), (T(s['e']) if i < len(scenes) - 1 else END_NEW)
-    for key in ('shake', 'glow_at'):
+    for key in ('shake', 'glow_at', 'logo_at'):
         if s.get(key): s[key] = T(s[key])
     s['words'] = [(T(tt), im, x, y) for tt, im, x, y in s.get('words', [])]
     spec = special(s) if s.get('kind') else {}
@@ -505,6 +543,7 @@ def render_scene(i):
             f = Image.fromarray((np.asarray(f.convert('RGB'), dtype=np.float32) * (1 - 0.5 * k)).astype(np.uint8)).convert('RGBA')
         if dfn: f.alpha_composite(dfn(u))
         for (tt, im, x, y) in words: word_in(f, im, t, tt, x, y)
+        if s.get('logo_at'): f = logo_reveal(f, t, s['logo_at'])
         if s.get('verse'): f.alpha_composite(verse_tag(s['verse']), (int(W / 2 - verse_tag(s['verse']).width / 2), 1478))
         if s0 not in (0.0, 10.38, 30.2, 108.3): draw_caption(f, t)
         f = M.vignette(f, 0.62)

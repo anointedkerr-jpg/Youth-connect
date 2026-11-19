@@ -55,7 +55,7 @@ for t in (3.12, 3.9, 4.6):
     at(sfx.boom(0.8, 70), t, db(-19))
 at(sfx.boom(2.0, 50), 5.65, db(-12))
 at(sfx.heartbeat(3, 70), 7.65, db(-13))
-at(sfx.boom(2.4, 44), 10.38, db(-10)); at(sfx.shimmer(1.8), 10.45, db(-20))
+at(sfx.reveal(), 10.38 - 0.35, db(-8))   # logo reveal
 at(sfx.boom(1.0, 80), 22.3, db(-18))
 at(sfx.footsteps(5, 0.42), 28.1, db(-17))
 at(sfx.meow(), 32.2, db(-9)); at(sfx.boom(1.2, 60), 32.35, db(-14))
@@ -78,7 +78,7 @@ for t in (96.18, 96.9, 97.54):
     at(sfx.boom(0.9, 66), t, db(-15))
 at(sfx.whoosh(0.9, True), 99.8, db(-17)); at(sfx.shimmer(1.4), 100.6, db(-20))
 at(sfx.riser(1.7), 102.15, db(-17)); at(sfx.boom(2.0, 50), 103.84, db(-13)); at(sfx.shimmer(2.2), 103.9, db(-17))
-at(sfx.boom(2.2, 46), 108.3, db(-11)); at(sfx.shimmer(1.8), 108.35, db(-18))
+at(sfx.reveal(), 108.3 - 0.35, db(-8))   # logo reveal
 
 # ---- gentle ducking of the sound bus under the voice ----
 env = np.abs(vo); k = int(0.12 * SR)

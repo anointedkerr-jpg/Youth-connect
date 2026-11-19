@@ -188,3 +188,18 @@ def footsteps(n_steps=4, gap=0.42):
     for d, a in ((0.045, 0.35), (0.09, 0.22), (0.15, 0.12)):
         k = int(d * SR); rev[k:] += out[:-k] * a
     return norm(lowpass(out + rev, 5000))
+
+
+def reveal():
+    """Logo reveal: short rising whoosh into a punchy hit, bright chime and sparkle tail.
+    The hit lands 0.35 s into the sound."""
+    pre = 0.35
+    n = int((pre + 2.4) * SR); out = np.zeros(n, np.float32)
+    w = whoosh(pre + 0.05, True); out[:len(w)] += w * 0.7
+    h = int(pre * SR)
+    b = boom(1.6, 58); out[h:h + len(b)] += b[:n - h] * 0.9
+    t = np.arange(int(1.8 * SR)) / SR
+    chime = sum(np.sin(2 * np.pi * f * t) * a for f, a in ((1046.5, 1), (1568, 0.6), (2093, 0.45), (3136, 0.25))) * np.exp(-t * 3.2)
+    out[h:h + len(chime)] += chime[:n - h] * 0.35
+    sh = shimmer(1.8); out[h:h + len(sh)] += sh[:n - h] * 0.4
+    return norm(np.tanh(out * 1.4))

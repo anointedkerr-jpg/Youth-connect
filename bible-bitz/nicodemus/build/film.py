@@ -10,6 +10,7 @@ import motion as M
 from motion import Layer, render_frame, relight, night_grade, add_light, light_pool, dust_layer, ease, W, H, FPS
 from engine import ROOT, A, grain, font
 import stills2 as S2
+from timewarp import T, END_NEW
 
 OUTD = os.path.join(ROOT, 'render'); SC = os.path.join(OUTD, 'scenes'); os.makedirs(SC, exist_ok=True)
 AUD = os.path.join(ROOT, 'audio')
@@ -239,7 +240,7 @@ def build_scenes():
     # 5 title
     def title_extra(f, t):
         pass
-    add(10.38, 12.6, layers=lambda: [bgL(gallery([('frame_gloria_a', raw('tissot_nicodemus'))], wall='velvet', ws=(920,), pos=((W / 2, 880),)))],
+    add(10.38, 12.6, layers=lambda: [bgL(bg_painting('tissot_nicodemus', None, 0.6, 2))],
         cam=push(0.06), words=[(10.45, big('BIBLE BITZ', 150, GOLD), W / 2, 380), (11.52, serif('things you may have missed', 52), W / 2, 1180)])
     # 6a Pharisee, ruler
     add(12.6, 15.0, layers=lambda: [bgL(bg_court()), L(nic(), 640, 1640 - 560, h=1120, depth=0.6, anim=walk_in(-200, dur=1.2))],
@@ -247,7 +248,7 @@ def build_scenes():
     # 6b seat among the leaders
     add(15.0, 17.42, layers=lambda: [bgL(bg_painting('sanhedrin', (300, 0, 1500, 1302), 0.8))], cam=push(0.12, 40), verse='JOHN 3:1', sfx_bed='murmur')
     # 7 teacher of Israel
-    add(17.42, 19.76, layers=lambda: [bgL(gallery([('frame_gloria_a', raw('tissot_interview'))], ws=(820,), pos=((W / 2, 820),)))],
+    add(17.42, 19.76, layers=lambda: [bgL(bg_painting('tissot_interview', (20, 20, 570, 748), 0.9))],
         cam=push(0.1), verse='JOHN 3:10')
     # 8 knew the law, the scriptures
     add(19.76, 21.6, layers=lambda: [bgL(bg_painting('callot_pharisees', (40, 40, 1640, 1100), 0.85))], cam=push(0.14, -30))
@@ -266,7 +267,7 @@ def build_scenes():
     # 14 fear... but he came (cat scare)
     add(31.92, 35.32, kind='cat')
     # 15 respect / Rabbi...
-    add(35.32, 39.14, layers=lambda: [bgL(gallery([('frame_gloria_b', raw('tanner_night_visit').crop((60, 60, 1860, 1500)))], ws=(900,), pos=((W / 2, 820),)))],
+    add(35.32, 39.14, layers=lambda: [bgL(bg_painting('tanner_night_visit', (500, 60, 1500, 1640), 0.9))],
         cam=push(0.12), verse='JOHN 3:2')
     # 16 Jesus answers... born again
     add(39.14, 42.6, layers=lambda: [bgL(bg_painting('dejode_night_piece', (60, 40, 1640, 1180), 0.9))], cam=push(0.16, 0, -30),
@@ -282,7 +283,7 @@ def build_scenes():
     # 20a story goes quiet
     add(55.68, 59.1, layers=lambda: [bgL(bg_street('a', night=False))], cam=push(0.06, 30), words=[(55.9, serif('quiet.', 120), W / 2, 520)], sfx_bed='tick')
     # 20b nothing more of Nicodemus (empty frame)
-    add(59.1, 61.74, kind='empty_frame')
+    add(59.1, 61.74, kind='fade_out')
     # 21a leaders want him arrested
     add(61.74, 63.8, layers=lambda: [bgL(bg_painting('sanhedrin', (100, 0, 1300, 1302), 0.75))], cam=push(0.14, -40), sfx_bed='murmur')
     # 21b one voice speaks up
@@ -308,7 +309,7 @@ def build_scenes():
     # 29 now in daylight
     add(88.84, 92.1, kind='sack_day', words=[(89.2, big('DAYLIGHT.', 140, GOLD), W / 2, 380)])
     # 30 last the Bible tells us / only John
-    add(92.1, 95.42, layers=lambda: [bgL(gallery([('frame_gloria_a', raw('tissot_nicodemus'))], ws=(640,), pos=((W / 2, 800),)))], cam=push(0.1),
+    add(92.1, 95.42, layers=lambda: [bgL(bg_painting('tissot_nicodemus', None, 0.8))], cam=push(0.12),
         words=[(93.84, serif('ONLY JOHN', 110, GOLD), W / 2, 330)])
     # 31-32 three scenes + arc
     add(95.42, 101.04, kind='three')
@@ -323,7 +324,7 @@ def build_scenes():
     add(105.64, 108.3, layers=lambda: [bgL(olives_day()), L(nic_day(), 360, 1700 - 500, h=1000, depth=0.6, anim=breathe)], cam=push(0.08, 40),
         words=[(105.64, big('FAITH', 140, GOLD), 700, 460), (107.1, big('COURAGE', 130, GOLD), 680, 620)])
     # 37 Bible Bitz end title
-    add(108.3, 110.14, layers=lambda: [bgL(gallery([('frame_gloria_a', raw('tissot_nicodemus'))], wall='velvet', ws=(920,), pos=((W / 2, 880),)))],
+    add(108.3, 110.14, layers=lambda: [bgL(bg_painting('tissot_nicodemus', None, 0.6, 2))],
         cam=push(0.05), words=[(108.3, big('BIBLE BITZ', 150, GOLD), W / 2, 380), (109.14, serif('things you may have missed', 52), W / 2, 1180)])
     # 38 like & subscribe / more people
     add(110.14, 118.4, kind='outro')
@@ -369,7 +370,7 @@ def special(s):
                             Layer(ledge, W / 2, FL - 40 + ledge.height / 2, depth=0.95)],
                     cam=push(0.08, 40, -15), post=ex, dust='cold')
     if k == 'cat':
-        bg = bg_street('b'); FL = 1600; SCARE = 32.35 - s['s']
+        bg = bg_street('b'); FL = 1600; SCARE = T(32.35) - s['s']
         walk = relight(cut('s01_rooftop_lantern'), light=(0.72, 0.62))
         jump = relight(cut('s03_cat_scare'), light=(0.12, 0.42))
         cat = relight(load('kittl_cut2/cat.png'), light=(0.0, 0.3), ambient=(0.55, 0.6, 0.8), warm=(1.1, 0.95, 0.8), reach=1.4)
@@ -398,15 +399,16 @@ def special(s):
         def ex(f, t):
             u = t - s['s']
             word_in(f, g, u, 0.0, W / 2, 620 - 60 * ease(min(1, max(0, u - 1.5) / 0.5)))
-            word_in(f, again, u, 44.28 - s['s'], W / 2 - 0, 860)
-            if u > 45.42 - s['s']:
-                word_in(f, above, u, 45.42 - s['s'], W / 2, 1040)
+            word_in(f, again, u, T(44.28) - s['s'], W / 2 - 0, 860)
+            if u > T(45.42) - s['s']:
+                word_in(f, above, u, T(45.42) - s['s'], W / 2, 1040)
             return f
         return dict(layers=[bgL(bgc)], cam=push(0.08), post=ex, dust='warm')
-    if k == 'empty_frame':
-        bgc = S2.wood_wall(0.5).resize((int(W * 1.12), int(H * 1.12)))
-        fr, hole = S2.gilt('frame_gloria_b'); fr = S2.fit(fr, w=620) if hasattr(S2, 'fit') else fr
-        return dict(layers=[bgL(bgc), L(fr, W / 2, 820, depth=0.4)], cam=push(0.1), words=[(59.3, serif('...', 140), W / 2, 820)])
+    if k == 'fade_out':
+        lay = [bgL(bg_street('a')), L(relight(cut('nicodemus_fullbody_01'), light=(0.2, 0.3), reach=1.2, ambient=(0.55, 0.6, 0.8)),
+                                       W / 2, 1640 - 520, h=1040, depth=0.6,
+                                       anim=lambda t: {'alpha': max(0, 1 - t / 2.2), 'dx': -40 * t})]
+        return dict(layers=lay, cam=push(0.08), dust='warm')
     if k == 'burial':
         bg = tomb_bg()
         men = relight(cut('s06_burial_two_men'), light=(-0.2, 0.3), reach=1.6, ambient=(0.7, 0.66, 0.66), warm=(1.12, 0.98, 0.82))
@@ -426,40 +428,42 @@ def special(s):
         if k == 'spices':
             myrrh = relight(load('cut/kohler_plate185.png'), light=(0, 0), reach=3, ambient=(0.85, 0.8, 0.75), warm=(1, 1, 1))
             aloe = relight(load('cut/kohler_aloe.png'), light=(0, 0), reach=3, ambient=(0.85, 0.8, 0.75), warm=(1, 1, 1))
-            lay += [L(myrrh, 140, 820, h=640, depth=0.8, anim=fade_in(81.2 - s['s'], 0.3, dx=-200)),
-                    L(aloe, 940, 820, h=600, depth=0.8, anim=fade_in(81.6 - s['s'], 0.3, dx=200))]
+            lay += [L(myrrh, 140, 820, h=640, depth=0.8, anim=fade_in(T(81.2) - s['s'], 0.3, dx=-200)),
+                    L(aloe, 940, 820, h=600, depth=0.8, anim=fade_in(T(81.6) - s['s'], 0.3, dx=200))]
             words = [(80.4, big('100 POUNDS', 140, GOLD), W / 2, 380), (82.6, big('≈ 75 LB TODAY', 96), W / 2, 540)]
         return dict(layers=lay, cam=push(0.08, 30), dust='warm', words=words,
                     post=lambda f, t: add_light(f, light_pool(-80, 420, 650, (255, 175, 90)), 0.4))
     if k == 'three':
-        pics = [('frame_gloria_b', raw('tanner_night_visit').crop((60, 60, 1860, 1500))),
-                ('frame_gloria_a', raw('sanhedrin').crop((300, 0, 1500, 1302))),
-                ('frame_gloria_b', raw('tissot_carried_tomb').crop((20, 30, 560, 740)))]
-        bgc = S2.wood_wall(0.5).resize((int(W * 1.12), int(H * 1.12)))
-        frames = [S2.framed(f, p, 440) for f, p in pics]
-        pos = [(250, 560), (W / 2 + 40, 900), (830, 1240)]
-        times = [96.18, 96.9, 97.54]
-        lay = [bgL(bgc)] + [L(fr, x, y, depth=0.5, anim=fade_in(tt - s['s'], 0.15, dy=-60)) for fr, (x, y), tt in zip(frames, pos, times)]
-        labels = [serif('NIGHT', 56, GOLD), serif('DEFENSE', 56, GOLD), serif('BURIAL', 56, GOLD)]
+        # three stacked panels, one per word, no frames
+        pics = [raw('tanner_night_visit').crop((300, 200, 1700, 1100)), raw('sanhedrin').crop((300, 200, 1500, 1000)),
+                raw('tissot_carried_tomb').crop((20, 160, 570, 520))]
+        ph = 560; gap = 22; top = (H - 3 * ph - 2 * gap) // 2
+        panels = []
+        for p in pics:
+            q = S2.cover(S2.grade(p, 0.9, 1.02), W - 60, ph).convert('RGBA'); panels.append(q)
+        times = [T(96.18), T(96.9), T(97.54)]
+        bg = Image.new('RGBA', (int(W * 1.12), int(H * 1.12)), (14, 12, 12, 255))
+        ys = [top + ph / 2 + i * (ph + gap) for i in range(3)]
+        lay = [bgL(bg)] + [L(pn, W / 2, y, depth=0.4, anim=fade_in(tt - s['s'], 0.18, dx=(-1) ** i * 300)) for i, (pn, y, tt) in enumerate(zip(panels, ys, times))]
+        labels = [big('NIGHT', 96, GOLD), big('DEFENSE', 96, GOLD), big('BURIAL', 96, GOLD)]
         def ex(f, t):
             u = t - s['s']
-            for lab, (x, y), tt in zip(labels, pos, times):
-                word_in(f, lab, u, tt - s['s'], x, y + 300 if y < 1100 else y - 330)
-            a0 = 99.84 - s['s']
-            if u > a0:   # draw the golden arc through the three frames
-                q = min(1, (u - a0) / 0.9)
-                d = ImageDraw.Draw(f); pts = []
+            for lab, y, tt in zip(labels, ys, times):
+                word_in(f, lab, u, tt - s['s'] + 0.1, W / 2, y + ph / 2 - 70)
+            a0 = T(99.84) - s['s']
+            if u > a0:   # golden arc drawn down through the three panels
+                q = min(1, (u - a0) / 0.9); d = ImageDraw.Draw(f); pts = []
                 for i in range(int(60 * q) + 1):
-                    v = i / 60; x = 160 + v * 760; y = 470 + v * 870 - 380 * math.sin(v * math.pi)
-                    pts.append((x, y))
+                    v = i / 60; pts.append((140 + v * 800 + 260 * math.sin(v * math.pi), ys[0] - 120 + v * (ys[2] - ys[0] + 240)))
                 if len(pts) > 1: d.line(pts, fill=GOLD + (255,), width=14, joint='curve')
             return f
-        return dict(layers=lay, cam=push(0.06), post=ex, dust='warm')
+        return dict(layers=lay, cam=push(0.05), post=ex, dust='warm')
     if k == 'outro':
-        bgc = gallery([('frame_gloria_a', raw('tissot_joseph')), ('frame_gloria_b', raw('tissot_nicodemus')), ('frame_gloria_a', raw('tissot_council').crop((60, 60, 700, 520)))],
-                      wall='velvet', ws=(380, 420, 400), pos=((260, 620), (W / 2 + 40, 980), (820, 640)), rots=(-4, 2, 5))
-        return dict(layers=[bgL(bgc)], cam=push(0.1), dust='warm',
-                    words=[(110.4, big('LIKE + SUBSCRIBE', 92, GOLD), W / 2, 330), (112.3, serif('more people nobody talks about', 46), W / 2, 1230)])
+        nic = relight(cut('nicodemus_fullbody_01'), light=(-0.2, 0.2), reach=1.8, ambient=(0.75, 0.7, 0.68), warm=(1.1, 1.0, 0.86))
+        jos = relight(cut('joseph_fullbody_01'), light=(-0.2, 0.2), reach=1.8, ambient=(0.75, 0.7, 0.68), warm=(1.1, 1.0, 0.86))
+        return dict(layers=[bgL(olives_day()), L(jos, 760, 1700 - 520, h=1040, depth=0.55, anim=breathe), L(nic, 330, 1720 - 560, h=1120, depth=0.6, anim=breathe)],
+                    cam=push(0.1, -30), dust='warm', words_old=False,
+                    words=[(T(110.4), big('LIKE + SUBSCRIBE', 92, GOLD), W / 2, 330), (T(112.3), serif('more people nobody talks about', 46), W / 2, 470)])
     raise ValueError(k)
 
 
@@ -473,16 +477,20 @@ def whip(img, k, direction=1):
 
 
 def render_scene(i):
-    scenes = build_scenes(); s = scenes[i]
+    scenes = build_scenes(); s = dict(scenes[i]); s0 = s['s']
+    s['s'], s['e'] = T(s['s']), (T(s['e']) if i < len(scenes) - 1 else END_NEW)
+    for key in ('shake', 'glow_at'):
+        if s.get(key): s[key] = T(s[key])
+    s['words'] = [(T(tt), im, x, y) for tt, im, x, y in s.get('words', [])]
     spec = special(s) if s.get('kind') else {}
     layers = spec.get('layers') or s['layers']()
     cam = spec.get('cam') or s.get('cam') or push()
-    words = list(s.get('words', [])) + list(spec.get('words', []))
+    words = list(s.get('words', [])) + [(T(tt) if spec.get('words_old', True) else tt, im, x, y) for tt, im, x, y in spec.get('words', [])]
     post = spec.get('post'); lights = s.get('lights', [])
     dust = spec.get('dust') or s.get('dust')
     dfn = dust_layer(45, i + 3, warm=(dust != 'cold')) if dust else None
     f0 = round(s['s'] * FPS); f1 = round(s['e'] * FPS); n = f1 - f0
-    shake = spec.get('shake') or s.get('shake'); glow_at = s.get('glow_at')
+    shake = (T(spec['shake']) if spec.get('shake') else None) or s.get('shake'); glow_at = s.get('glow_at')
     def frame(j):
         t = (f0 + j) / FPS; u = t - s['s']; k = ease(min(1, u / max(0.1, s['e'] - s['s'])))
         c = cam(k)
@@ -498,7 +506,7 @@ def render_scene(i):
         if dfn: f.alpha_composite(dfn(u))
         for (tt, im, x, y) in words: word_in(f, im, t, tt, x, y)
         if s.get('verse'): f.alpha_composite(verse_tag(s['verse']), (int(W / 2 - verse_tag(s['verse']).width / 2), 1478))
-        if s['s'] not in (0.0, 10.38, 30.2, 108.3): draw_caption(f, t)
+        if s0 not in (0.0, 10.38, 30.2, 108.3): draw_caption(f, t)
         f = M.vignette(f, 0.62)
         # whip-pan out on the last 2 frames, whip in on the first frame
         if j >= n - 2 and i < len(scenes) - 1: f = whip(f, (j - (n - 3)) / 2, 1)

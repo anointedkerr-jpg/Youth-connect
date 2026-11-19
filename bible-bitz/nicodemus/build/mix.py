@@ -4,25 +4,26 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import numpy as np
 import sfx
 from sfx import SR
+from timewarp import T, END_NEW
 
 ROOT = sfx.ROOT; AUD = os.path.join(ROOT, 'audio')
 voice = sfx.load(os.path.join(AUD, 'voiceover_final.wav')) * 0.9
-TOTAL = 118.4
+TOTAL = END_NEW
 N = int(TOTAL * SR) + SR
 bus = np.zeros(N, np.float32)
 vo = np.zeros(N, np.float32); vo[:len(voice)] = voice[:N]
 
 
 def at(x, t, gain):
-    i = int(t * SR); j = min(N, i + len(x))
+    t = T(t); i = int(t * SR); j = min(N, i + len(x))
     if i < N: bus[i:j] += x[:j - i] * gain
 
 
 def bed(gen, t0, t1, gain, fade=0.6):
-    d = t1 - t0; x = gen(d + 0.1)[:int(d * SR)]
+    t0, t1 = T(t0), T(min(t1, 118.4)); d = t1 - t0; x = gen(d + 0.1)[:int(d * SR)]
     fn = int(min(fade, d / 3) * SR); e = np.ones(len(x), np.float32)
     e[:fn] = np.linspace(0, 1, fn); e[-fn:] = np.linspace(1, 0, fn)
-    at(x * e, t0, gain)
+    i = int(t0 * SR); j = min(N, i + len(x)); bus[i:j] += (x * e)[:j - i] * gain
 
 
 db = lambda d: 10 ** (d / 20)
@@ -45,7 +46,7 @@ cuts = [0.0, 1.54, 3.12, 5.56, 7.6, 10.38, 12.6, 15.0, 17.42, 19.76, 21.6, 23.26
         42.6, 47.2, 51.4, 55.68, 59.1, 61.74, 63.8, 66.64, 68.52, 70.74, 72.06, 75.42, 79.68, 85.2, 88.84, 92.1, 95.42,
         101.04, 102.86, 103.84, 105.64, 108.3, 110.14]
 for c in cuts[1:]:
-    w = sfx.whoosh(0.45, True); at(w, max(0, c - 0.2), db(-23))
+    w = sfx.whoosh(0.45, True); bus_i = int(max(0, T(c) - 0.2) * SR); bus[bus_i:bus_i + len(w)] += w[:N - bus_i] * db(-23)
 
 # ---- hits and spot effects ----
 at(sfx.boom(2.4, 46), 0.0, db(-9))

@@ -15,7 +15,8 @@
      exact names below (or change the src). Until a photo exists, a
      labeled placeholder shows in its frame.
        img/hero-arch.jpg      img/hero-circle.jpg    img/hero-octagon.jpg
-       img/look-1.jpg ... img/look-6.jpg             img/ceo.jpg
+       img/look-1.jpg  img/look-2.jpg  img/look-3.jpg  img/ceo.jpg
+     More looks: see the MORE LOOKS comment in The Looks section.
   5. Booking calendar: search "TODO: GHL CALENDAR" and paste the embed
      copied from GHL > Calendars > (your calendar) > Share > Embed.
   6. Delete the PREVIEW BAR block (marked below) before going live.
@@ -151,7 +152,8 @@ section{padding:72px 0}
     repeating-linear-gradient(135deg, transparent 0 14px, rgba(255,255,255,.04) 14px 28px),
     var(--placeholder);
 }
-.frame > .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.frame > .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+.frame > .pic img.top{object-position:50% 8%}
 .frame > .pic .slot{
   position:absolute;inset:0;display:grid;place-content:center;text-align:center;
   padding:12px;font-size:.75rem;line-height:1.3;color:var(--muted);letter-spacing:.04em;
@@ -252,6 +254,7 @@ section{padding:72px 0}
 
 /* ---------- The Looks ---------- */
 .looks-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px 16px}
+.looks-grid .look:last-child:nth-child(odd){grid-column:1 / -1;justify-self:center;width:62%}
 .look figure{margin:0}
 .look figcaption{margin-top:12px}
 .look figcaption strong{
@@ -368,6 +371,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
   .wrap{padding:0 32px}
   section{padding:104px 0}
   .looks-grid{grid-template-columns:repeat(3,1fr);gap:44px 28px}
+  .looks-grid .look:last-child:nth-child(odd){grid-column:auto;width:auto;justify-self:stretch}
   .policy-grid{grid-template-columns:1fr 1fr}
   .hours-grid,.check-grid{grid-template-columns:1fr 1fr;gap:64px}
   .ceo-grid{grid-template-columns:.8fr 1.2fr;gap:64px}
@@ -467,15 +471,15 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
       </a>
       <div class="frame shape-circle"><span class="pic">
         <span class="slot"><b>Photo</b>img/hero-circle.jpg</span>
-        <img src="img/hero-circle.jpg" alt="Close up of a fresh silk press by Naomi" onerror="this.remove()">
+        <img src="img/hero-circle.jpg" alt="Close up of a glossy black body wave install with a middle part" onerror="this.remove()">
       </span></div>
       <div class="frame shape-arch"><span class="pic">
         <span class="slot"><b>Photo</b>img/hero-arch.jpg</span>
-        <img src="img/hero-arch.jpg" alt="Client showing a finished style from Hair by Naomi" onerror="this.remove()">
+        <img src="img/hero-arch.jpg" alt="Client in a white blazer with long, voluminous black body waves" onerror="this.remove()">
       </span></div>
       <div class="frame shape-oct"><span class="pic">
         <span class="slot"><b>Photo</b>img/hero-octagon.jpg</span>
-        <img src="img/hero-octagon.jpg" alt="Knotless braids finished in the Miami studio" onerror="this.remove()">
+        <img src="img/hero-octagon.jpg" alt="Four clients in pink showing straight, platinum and curly installs" onerror="this.remove()">
       </span></div>
     </div>
   </div>
@@ -497,29 +501,19 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
     <div class="looks-grid">
       <!-- EDIT: look names and notes -->
       <div class="look"><figure>
-        <div class="frame shape-arch"><span class="pic"><span class="slot"><b>Photo</b>img/look-1.jpg</span><img src="img/look-1.jpg" alt="Silk press, bone straight with a soft bend" loading="lazy" onerror="this.remove()"></span></div>
-        <figcaption><strong>Silk press</strong><span>Bone straight, soft bend at the ends</span></figcaption>
+        <div class="frame shape-arch"><span class="pic"><span class="slot"><b>Photo</b>img/look-1.jpg</span><img src="img/look-1.jpg" alt="Long burgundy body wave with a deep side part and laid edges" loading="lazy" onerror="this.remove()"></span></div>
+        <figcaption><strong>Burgundy body wave</strong><span>Wig install, deep side part, laid edges</span></figcaption>
       </figure></div>
       <div class="look"><figure>
-        <div class="frame shape-circle"><span class="pic"><span class="slot"><b>Photo</b>img/look-2.jpg</span><img src="img/look-2.jpg" alt="Waist length knotless braids" loading="lazy" onerror="this.remove()"></span></div>
-        <figcaption><strong>Knotless braids</strong><span>Small, waist length, beads optional</span></figcaption>
+        <div class="frame shape-circle"><span class="pic"><span class="slot"><b>Photo</b>img/look-2.jpg</span><img src="img/look-2.jpg" alt="Four sleek black installs: bone straight, side swoop, curtain bang and half up" loading="lazy" onerror="this.remove()"></span></div>
+        <figcaption><strong>Sleek and straight</strong><span>Bone straight, swoops and half up styles</span></figcaption>
       </figure></div>
       <div class="look"><figure>
-        <div class="frame shape-oct"><span class="pic"><span class="slot"><b>Photo</b>img/look-3.jpg</span><img src="img/look-3.jpg" alt="Copper color on natural curls" loading="lazy" onerror="this.remove()"></span></div>
-        <figcaption><strong>Copper color</strong><span>Single process on natural curls</span></figcaption>
+        <div class="frame shape-oct"><span class="pic"><span class="slot"><b>Photo</b>img/look-3.jpg</span><img src="img/look-3.jpg" alt="Four color installs: burgundy curls, copper waves, platinum straight and blue black curls" loading="lazy" onerror="this.remove()"></span></div>
+        <figcaption><strong>Custom color</strong><span>Burgundy, copper, platinum and blue black</span></figcaption>
       </figure></div>
-      <div class="look"><figure>
-        <div class="frame shape-oct"><span class="pic"><span class="slot"><b>Photo</b>img/look-4.jpg</span><img src="img/look-4.jpg" alt="Sew-in with a deep side part" loading="lazy" onerror="this.remove()"></span></div>
-        <figcaption><strong>Sew-in</strong><span>Leave out, deep side part</span></figcaption>
-      </figure></div>
-      <div class="look"><figure>
-        <div class="frame shape-arch"><span class="pic"><span class="slot"><b>Photo</b>img/look-5.jpg</span><img src="img/look-5.jpg" alt="Sleek high ponytail with swoop" loading="lazy" onerror="this.remove()"></span></div>
-        <figcaption><strong>Sleek ponytail</strong><span>High, long, with a swoop</span></figcaption>
-      </figure></div>
-      <div class="look"><figure>
-        <div class="frame shape-circle"><span class="pic"><span class="slot"><b>Photo</b>img/look-6.jpg</span><img src="img/look-6.jpg" alt="Fresh loc retwist with a barrel style" loading="lazy" onerror="this.remove()"></span></div>
-        <figcaption><strong>Loc retwist</strong><span>Retwist and barrel style</span></figcaption>
-      </figure></div>
+      <!-- MORE LOOKS: copy one .look block above, change the file name (img/look-4.jpg and up),
+           alt text and caption. Rotate shapes: shape-arch, shape-circle, shape-oct. -->
     </div>
   </div>
 </section>
@@ -564,7 +558,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
   <div class="wrap ceo-grid">
     <div class="frame shape-arch"><span class="pic">
       <span class="slot"><b>Photo</b>img/ceo.jpg</span>
-      <img src="img/ceo.jpg" alt="Naomi, owner and lead stylist of Hair by Naomi" loading="lazy" onerror="this.remove()">
+      <img class="top" src="img/ceo.jpg" alt="Naomi, owner of Hair by Naomi, in a cream suit with sleek straight hair" loading="lazy" onerror="this.remove()">
     </span></div>
     <div class="ceo-copy">
       <h2 class="h2" id="ceoTitle">Meet the CEO<span class="script" aria-hidden="true">hey, I'm Naomi</span></h2>

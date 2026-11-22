@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<!--
+  =====================================================================
+  HAIR BY NAOMI  |  One page booking site template (GHL ready)
+  =====================================================================
+  CONFIG: what to change for each salon
+  ---------------------------------------------------------------------
+  1. Colorway ........ <html data-theme="wine">   options: wine, cherry
+  2. Font set ........ <html data-font="bold">    options: bold, lux, play
+       bold = Bowlby One + Anton + Birthstone + DM Sans (current)
+       lux  = Playfair Display + Birthstone + DM Sans
+       play = Zen Dots + Fredoka + Birthstone
+  3. Shop name, city, phone, address, Instagram, hours: search "EDIT:"
+  4. Photos: drop files into the img folder next to this file using the
+     exact names below (or change the src). Until a photo exists, a
+     labeled placeholder shows in its frame.
+       img/hero-arch.jpg      img/hero-circle.jpg    img/hero-octagon.jpg
+       img/look-1.jpg ... img/look-6.jpg             img/ceo.jpg
+  5. Booking calendar: search "TODO: GHL CALENDAR" and paste the embed
+     copied from GHL > Calendars > (your calendar) > Share > Embed.
+  6. Delete the PREVIEW BAR block (marked below) before going live.
+  =====================================================================
+-->
+<html lang="en" data-theme="wine" data-font="bold">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hair by Naomi | Miami, FL hair stylist, book online</title>
+<meta name="description" content="Hair by Naomi, Miami FL. Silk presses, braids, sew-ins and color. Pick a day and book your appointment online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Birthstone&family=Bowlby+One&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Fredoka:wght@400;600;700&family=Playfair+Display:ital,wght@0,700;1,900&family=Zen+Dots&display=swap" rel="stylesheet">
+<style>
+/* ---------- Colorways ---------- */
+:root,
+[data-theme="wine"]{
+  --bg:#1E0410;
+  --bg-2:#2B0819;
+  --bg-3:#3A0C22;
+  --ink:#FBEFF3;
+  --muted:#E6BFCD;
+  --accent:#C8FF2E;
+  --on-accent:#1E0410;
+  --pink:#FF5FAE;
+  --on-pink:#1E0410;
+  --line:rgba(200,255,46,.28);
+  --placeholder:#4A1230;
+  --chrome:linear-gradient(178deg,#ffffff 0%,#f1f2f6 18%,#a9aeb8 38%,#5e636e 49%,#f7f8fa 53%,#c4c8d0 66%,#7b808b 82%,#e9ebef 100%);
+  --chrome-shadow:drop-shadow(0 5px 0 #0d0207) drop-shadow(0 9px 0 rgba(200,255,46,.85));
+  color-scheme:dark;
+}
+[data-theme="cherry"]{
+  --bg:#FFF1E6;
+  --bg-2:#FBE3D4;
+  --bg-3:#F6D3C0;
+  --ink:#2A0610;
+  --muted:#6E2433;
+  --accent:#D1103A;
+  --on-accent:#FFF1E6;
+  --pink:#FF5FAE;
+  --on-pink:#2A0610;
+  --line:rgba(209,16,58,.3);
+  --placeholder:#F2C7B5;
+  --chrome:linear-gradient(178deg,#ffffff 0%,#e4e6eb 16%,#9298a3 36%,#3f434b 49%,#eef0f3 53%,#aab0ba 66%,#5a5f69 82%,#d7dae0 100%);
+  --chrome-shadow:drop-shadow(0 5px 0 #2A0610) drop-shadow(0 9px 0 rgba(209,16,58,.9));
+  color-scheme:light;
+}
+
+/* ---------- Font sets ---------- */
+:root,
+[data-font="bold"]{
+  --f-display:'Bowlby One', 'Arial Black', sans-serif;
+  --f-head:'Anton', 'Arial Narrow', sans-serif;
+  --f-script:'Birthstone', cursive;
+  --f-body:'DM Sans', system-ui, sans-serif;
+  --display-style:normal; --display-weight:400;
+  --head-weight:400; --head-case:uppercase; --head-track:.01em;
+  --hair-size:clamp(5.5rem, 31vw, 15rem);
+}
+[data-font="lux"]{
+  --f-display:'Playfair Display', Georgia, serif;
+  --f-head:'Playfair Display', Georgia, serif;
+  --f-script:'Birthstone', cursive;
+  --f-body:'DM Sans', system-ui, sans-serif;
+  --display-style:italic; --display-weight:900;
+  --head-weight:700; --head-case:none; --head-track:0;
+  --hair-size:clamp(5.5rem, 31vw, 15.5rem);
+}
+[data-font="play"]{
+  --f-display:'Zen Dots', 'Arial Black', sans-serif;
+  --f-head:'Fredoka', system-ui, sans-serif;
+  --f-script:'Birthstone', cursive;
+  --f-body:'Fredoka', system-ui, sans-serif;
+  --display-style:normal; --display-weight:400;
+  --head-weight:700; --head-case:none; --head-track:0;
+  --hair-size:clamp(4.6rem, 24vw, 12rem);
+}
+
+/* ---------- Base ---------- */
+*,*::before,*::after{box-sizing:border-box}
+html{overflow-x:clip;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--f-body);font-size:1rem;line-height:1.6;
+  overflow-x:clip;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-underline-offset:.2em}
+::selection{background:var(--accent);color:var(--on-accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 20px}
+section{padding:72px 0}
+.h2{
+  font-family:var(--f-head);font-weight:var(--head-weight);
+  text-transform:var(--head-case);letter-spacing:var(--head-track);
+  font-size:clamp(2.6rem, 11vw, 5rem);line-height:.95;margin:0 0 .15em;
+  position:relative;padding-bottom:.62em;width:fit-content;max-width:100%;
+}
+.h2 .script{
+  position:absolute;left:34%;top:52%;
+  font-family:var(--f-script);font-weight:400;text-transform:none;letter-spacing:0;
+  color:var(--accent);font-size:.78em;line-height:1;white-space:nowrap;
+  transform:rotate(-4deg);pointer-events:none;
+}
+.lede{color:var(--muted);max-width:40ch;margin:0 0 2rem;font-size:1.0625rem}
+
+/* Buttons */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.5em;
+  min-height:52px;padding:.9em 1.6em;border-radius:999px;
+  background:var(--accent);color:var(--on-accent);
+  font-family:var(--f-head);font-weight:var(--head-weight);text-transform:uppercase;
+  letter-spacing:.06em;font-size:1.05rem;text-decoration:none;
+  border:2px solid var(--accent);
+  box-shadow:0 4px 0 var(--ink);
+  transition:transform .15s ease-out, box-shadow .15s ease-out;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 6px 0 var(--ink)}
+.btn:active{transform:translateY(2px);box-shadow:0 1px 0 var(--ink)}
+.btn--ghost{background:transparent;color:var(--ink);box-shadow:none;border-color:var(--line)}
+.btn--ghost:hover{border-color:var(--accent);box-shadow:none}
+
+/* ---------- Photo frames (lime border via padded wrapper) ---------- */
+.frame{
+  position:relative;background:var(--accent);padding:4px;
+  width:100%;min-width:0;align-self:start;
+}
+.frame > .pic{
+  position:relative;display:block;width:100%;height:100%;overflow:hidden;
+  background:
+    repeating-linear-gradient(135deg, transparent 0 14px, rgba(255,255,255,.04) 14px 28px),
+    var(--placeholder);
+}
+.frame > .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.frame > .pic .slot{
+  position:absolute;inset:0;display:grid;place-content:center;text-align:center;
+  padding:12px;font-size:.75rem;line-height:1.3;color:var(--muted);letter-spacing:.04em;
+}
+.frame > .pic .slot b{display:block;font-family:var(--f-script);font-weight:400;font-size:1.9rem;color:var(--ink);letter-spacing:0;margin-bottom:.2em}
+.shape-arch,.shape-arch > .pic{border-radius:999px 999px 0 0}
+.shape-circle,.shape-circle > .pic{border-radius:50%}
+.shape-oct,.shape-oct > .pic{clip-path:polygon(29% 0,71% 0,100% 29%,100% 71%,71% 100%,29% 100%,0 71%,0 29%)}
+.shape-arch{aspect-ratio:3/4}
+.shape-circle,.shape-oct{aspect-ratio:1/1}
+
+/* ---------- Header ---------- */
+.top{
+  position:sticky;top:0;z-index:40;
+  background:color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter:saturate(1.2) blur(8px);-webkit-backdrop-filter:saturate(1.2) blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;min-height:64px;gap:16px}
+.logo{font-family:var(--f-display);font-style:var(--display-style);font-weight:var(--display-weight);font-size:1.15rem;text-decoration:none;letter-spacing:.02em}
+.logo span{font-family:var(--f-script);font-style:normal;font-weight:400;color:var(--accent);font-size:1.6em;margin-left:.15em}
+.nav{display:none;gap:28px;font-size:.95rem}
+.nav a{text-decoration:none;color:var(--muted)}
+.nav a:hover{color:var(--ink)}
+.top .btn{min-height:44px;padding:.55em 1.2em;font-size:.95rem;box-shadow:none}
+
+/* ---------- Hero ---------- */
+.hero{padding:36px 0 56px;position:relative}
+.hero-grid{display:grid;gap:36px}
+.opener{
+  margin-bottom:.25em !important;font-family:var(--f-script);font-size:clamp(2.2rem, 10vw, 3.4rem);
+  color:var(--accent);line-height:1;margin:0 0 .1em;transform:rotate(-3deg);transform-origin:left;
+}
+.hair{
+  font-family:var(--f-display);font-style:var(--display-style);font-weight:var(--display-weight);
+  font-size:var(--hair-size);line-height:.82;letter-spacing:-.01em;margin:0;
+  position:relative;padding-bottom:.42em;
+}
+.hair .chrome{
+  display:inline-block;padding:0 .04em .06em 0;
+  background:var(--chrome);-webkit-background-clip:text;background-clip:text;
+  color:transparent;-webkit-text-fill-color:transparent;
+  filter:var(--chrome-shadow);
+}
+.hair .by{
+  position:absolute;left:30%;top:63%;
+  font-family:var(--f-script);font-style:normal;font-weight:400;font-size:.36em;line-height:1;
+  color:var(--accent);transform:rotate(-6deg);white-space:nowrap;letter-spacing:0;
+  text-shadow:0 3px 0 var(--bg);
+}
+.where{
+  display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin:6px 0 22px;
+  font-family:var(--f-head);font-weight:var(--head-weight);text-transform:uppercase;letter-spacing:.12em;font-size:.95rem;
+}
+.where .pin{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border:1.5px solid var(--accent);border-radius:999px;color:var(--accent)}
+.where .pin svg{width:14px;height:14px}
+.hero-copy p.intro{color:var(--muted);max-width:36ch;margin:0 0 26px;font-size:1.0625rem}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px}
+
+.cluster{
+  position:relative;display:grid;grid-template-columns:1fr 1.25fr 1fr;
+  gap:12px;align-items:end;
+}
+.cluster .shape-circle{margin-bottom:22%}
+.cluster .shape-oct{margin-bottom:4%}
+
+/* Star badge */
+.badge{
+  position:absolute;right:-6px;top:-34px;width:118px;height:118px;z-index:3;
+  display:grid;place-items:center;text-decoration:none;
+}
+.badge svg{position:absolute;inset:0;width:100%;height:100%;animation:spin 14s linear infinite}
+.badge .star{fill:var(--pink)}
+.badge span{
+  position:relative;font-family:var(--f-head);font-weight:var(--head-weight);text-transform:uppercase;
+  color:var(--on-pink);font-size:1.05rem;line-height:.95;text-align:center;letter-spacing:.04em;
+}
+.badge:hover svg{animation-duration:4s}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ---------- Ticker ---------- */
+.ticker{
+  background:var(--accent);color:var(--on-accent);overflow:hidden;
+  border-block:3px solid var(--ink);padding:14px 0;
+}
+.ticker-track{display:flex;width:max-content;animation:marquee 30s linear infinite}
+.ticker ul{display:flex;list-style:none;margin:0;padding:0}
+.ticker li{
+  display:flex;align-items:center;white-space:nowrap;
+  font-family:var(--f-head);font-weight:var(--head-weight);text-transform:uppercase;
+  font-size:clamp(1.3rem, 5vw, 2rem);letter-spacing:.03em;line-height:1;
+}
+.ticker li::after{
+  content:"";width:.7em;height:.7em;margin:0 .8em;background:var(--pink);
+  clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* ---------- The Looks ---------- */
+.looks-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px 16px}
+.look figure{margin:0}
+.look figcaption{margin-top:12px}
+.look figcaption strong{
+  display:block;font-family:var(--f-head);font-weight:var(--head-weight);text-transform:var(--head-case);
+  font-size:1.35rem;line-height:1.05;letter-spacing:.02em;
+}
+.look figcaption span{font-size:.9rem;color:var(--muted)}
+
+/* ---------- Hours and contact ---------- */
+.hours{background:var(--bg-2)}
+.hours-grid{display:grid;gap:40px}
+.hours table{width:100%;border-collapse:collapse;font-size:1.05rem}
+.hours th,.hours td{padding:13px 0;border-bottom:1px dashed var(--line);text-align:left;font-weight:400}
+.hours th{font-family:var(--f-head);font-weight:var(--head-weight);text-transform:uppercase;letter-spacing:.06em}
+.hours td{text-align:right;color:var(--muted)}
+.hours tr.closed td{color:var(--pink)}
+[data-theme="cherry"] .hours tr.closed td{color:var(--accent);font-weight:700}
+.contact-list{list-style:none;margin:0 0 28px;padding:0;display:grid;gap:18px}
+.contact-list li{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:center}
+.contact-list .ic{
+  width:44px;height:44px;border-radius:50%;display:grid;place-items:center;
+  border:1.5px solid var(--accent);color:var(--accent);
+}
+.contact-list .ic svg{width:20px;height:20px}
+.contact-list small{display:block;font-size:.8rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
+.contact-list a{text-decoration:none;font-size:1.1rem}
+.contact-list a:hover{text-decoration:underline}
+
+/* ---------- Meet the CEO ---------- */
+.ceo-grid{display:grid;gap:36px;align-items:center}
+.ceo .frame{max-width:280px}
+@media (min-width:720px){.ceo .frame{max-width:400px}}
+.ceo-copy p{color:var(--muted);max-width:52ch}
+.ceo-copy p.first{color:var(--ink);font-size:1.2rem;line-height:1.5}
+.ceo-copy .sign{font-family:var(--f-script);font-size:3rem;color:var(--accent);line-height:1;margin:18px 0 0}
+
+/* ---------- Policies ---------- */
+.policies{background:var(--bg-2)}
+.policy-grid{display:grid;gap:16px}
+.policy{
+  position:relative;padding:26px 22px 24px;border-radius:22px;
+  background:var(--bg);border:1.5px solid var(--line);
+}
+.policy h3{
+  font-family:var(--f-head);font-weight:var(--head-weight);text-transform:var(--head-case);
+  font-size:1.7rem;line-height:1;margin:0 0 10px;letter-spacing:.02em;
+}
+.policy p{margin:0;color:var(--muted)}
+.policy .tag{
+  display:inline-block;margin-bottom:14px;font-family:var(--f-display);font-style:var(--display-style);font-weight:var(--display-weight);
+  font-size:2.2rem;line-height:1;color:var(--accent);
+}
+.policy--deposit{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.policy--deposit p{color:var(--on-accent)}
+.policy--deposit .tag{color:var(--on-accent)}
+
+/* ---------- Checklist ---------- */
+.check-grid{display:grid;gap:36px}
+.checklist{list-style:none;margin:0;padding:0;counter-reset:c}
+.checklist li{
+  display:grid;grid-template-columns:36px 1fr;gap:16px;align-items:start;
+  padding:18px 0;border-bottom:1px solid var(--line);font-size:1.0625rem;
+}
+.checklist li::before{
+  content:"";width:32px;height:32px;border-radius:9px;margin-top:-2px;
+  background:var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E0410' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/20px no-repeat;
+}
+[data-theme="cherry"] .checklist li::before{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFF1E6' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E");
+}
+.checklist strong{display:block;font-weight:700}
+.checklist span{color:var(--muted);font-size:.95rem}
+
+/* ---------- Booking calendar ---------- */
+.book{background:var(--bg-3)}
+.cal-box{
+  border:3px solid var(--accent);border-radius:28px;background:var(--bg);
+  padding:20px;min-height:560px;display:grid;
+}
+.cal-placeholder{
+  border:2px dashed var(--line);border-radius:18px;display:grid;place-content:center;
+  text-align:center;padding:32px 20px;gap:10px;
+}
+.cal-placeholder .big{font-family:var(--f-head);font-weight:var(--head-weight);text-transform:uppercase;font-size:1.8rem;line-height:1}
+.cal-placeholder p{margin:0;color:var(--muted);max-width:34ch}
+.cal-steps{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:10px}
+.cal-steps span{font-size:.85rem;padding:6px 12px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+
+/* ---------- Thank you ---------- */
+.thanks{text-align:center;padding:88px 0 120px}
+.thanks .ty{
+  font-family:var(--f-display);font-style:var(--display-style);font-weight:var(--display-weight);
+  font-size:clamp(3.4rem, 17vw, 9rem);line-height:.9;margin:0;
+  background:var(--chrome);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;
+  filter:var(--chrome-shadow);
+}
+.thanks .ty-script{font-family:var(--f-script);color:var(--accent);font-size:clamp(2.4rem, 10vw, 4rem);line-height:1;margin:.1em 0 .4em}
+.thanks p{color:var(--muted);max-width:44ch;margin:0 auto 28px}
+footer{border-top:1px solid var(--line);padding:24px 0 96px;font-size:.85rem;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+
+/* Mobile sticky book bar */
+.mbar{
+  position:fixed;left:12px;right:12px;bottom:12px;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:8px 8px 8px 20px;border-radius:999px;
+  background:var(--ink);color:var(--bg);box-shadow:0 10px 30px rgba(0,0,0,.35);
+}
+.mbar span{font-weight:700;font-size:.95rem}
+.mbar .btn{min-height:46px;padding:.5em 1.3em;box-shadow:none;font-size:.95rem}
+
+/* ---------- Larger screens ---------- */
+@media (min-width:720px){
+  .wrap{padding:0 32px}
+  section{padding:104px 0}
+  .looks-grid{grid-template-columns:repeat(3,1fr);gap:44px 28px}
+  .policy-grid{grid-template-columns:1fr 1fr}
+  .hours-grid,.check-grid{grid-template-columns:1fr 1fr;gap:64px}
+  .ceo-grid{grid-template-columns:.8fr 1.2fr;gap:64px}
+  .badge{width:140px;height:140px;right:-10px}
+  .badge span{font-size:1.25rem}
+}
+@media (min-width:1024px){
+  .nav{display:flex}
+  .mbar{display:none}
+  footer{padding-bottom:24px}
+  .hero{padding:56px 0 96px}
+  .hero-grid{grid-template-columns:1fr 1fr;align-items:center;gap:56px}
+  .cluster{grid-template-columns:1.35fr 1fr;grid-template-rows:auto auto;gap:18px;align-items:start}
+  .cluster .shape-arch{grid-column:1;grid-row:1 / 3;order:-1}
+  .cluster .shape-circle{grid-column:2;grid-row:1;margin:12% 0 0}
+  .cluster .shape-oct{grid-column:2;grid-row:2;margin:0}
+  .badge{right:auto;left:-44px;top:-30px;width:150px;height:150px}
+  [data-font="bold"]{--hair-size:clamp(9rem, 17vw, 15rem)}
+  [data-font="lux"]{--hair-size:clamp(9rem, 17vw, 15.5rem)}
+  [data-font="play"]{--hair-size:clamp(7rem, 12.5vw, 11.5rem)}
+  .policy-grid{grid-template-columns:repeat(4,1fr)}
+  .policy{padding:32px 26px}
+  .looks-grid .look:nth-child(3n+2){margin-top:64px}
+  .cal-box{padding:28px;min-height:680px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .badge svg,.ticker-track{animation:none}
+  .btn{transition:none}
+}
+
+/* ===== PREVIEW BAR styles (delete with the bar) ===== */
+@media (min-width:1024px){.pv{bottom:16px !important}}
+@media (max-width:719px){.pv label{display:none}.pv{flex-wrap:nowrap}}
+.pv{
+  position:fixed;left:12px;bottom:84px;z-index:60;
+  display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:center;
+  padding:6px;border-radius:14px;background:#111;color:#fff;font:600 12px/1 system-ui,sans-serif;
+  box-shadow:0 8px 24px rgba(0,0,0,.4);max-width:calc(100% - 24px);
+}
+.pv label{padding:0 4px;opacity:.75}
+.pv select{font:inherit;padding:8px;border-radius:8px;border:0;min-height:32px}
+.pv button{font:inherit;background:transparent;color:#fff;border:0;padding:8px;cursor:pointer;opacity:.75}
+</style>
+</head>
+<body>
+
+<!-- ===== PREVIEW BAR: preview only, delete this block before going live ===== -->
+<div class="pv" id="pv" aria-label="Template preview controls">
+  <label for="pvTheme">Colorway</label>
+  <select id="pvTheme"><option value="wine">Wine + Lime</option><option value="cherry">Cream + Cherry</option></select>
+  <label for="pvFont">Fonts</label>
+  <select id="pvFont"><option value="bold">Bowlby + Anton</option><option value="lux">Playfair</option><option value="play">Zen Dots + Fredoka</option></select>
+  <button type="button" id="pvHide" aria-label="Hide preview bar">Hide</button>
+</div>
+<!-- ===== END PREVIEW BAR ===== -->
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Hair by Naomi, back to top">HAIR<span>by Naomi</span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="#looks">The Looks</a>
+      <a href="#hours">Hours</a>
+      <a href="#ceo">Meet Naomi</a>
+      <a href="#policies">Policies</a>
+    </nav>
+    <a class="btn" href="#book">Book now</a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ===== HERO ===== -->
+<section class="hero" aria-labelledby="heroTitle">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="opener">Hair day starts here</p>
+      <h1 class="hair" id="heroTitle"><span class="chrome">HAIR</span><span class="by" aria-hidden="true">by Naomi</span><span class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)"> by Naomi</span></h1>
+      <div class="where">
+        <!-- EDIT: city -->
+        <span class="pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Miami, FL</span>
+        <span>Silk press</span><span>Braids</span><span>Color</span>
+      </div>
+      <!-- EDIT: intro line -->
+      <p class="intro">Silk presses that move, braids that last, and color that turns heads on Ocean Drive. Pick your look, pick your day, and I will take it from there.</p>
+      <div class="hero-ctas">
+        <a class="btn" href="#book">Book your appointment</a>
+        <a class="btn btn--ghost" href="#looks">See the looks</a>
+      </div>
+    </div>
+
+    <div class="cluster">
+      <a class="badge" href="#book" aria-label="Book now">
+        <svg viewBox="0 0 100 100" aria-hidden="true"><polygon class="star" points="50,2 58.6,19.2 76.6,11.6 75.4,31.1 94.4,35.3 82,50 94.4,64.7 75.4,68.9 76.6,88.4 58.6,80.8 50,98 41.4,80.8 23.4,88.4 24.6,68.9 5.6,64.7 18,50 5.6,35.3 24.6,31.1 23.4,11.6 41.4,19.2"/></svg>
+        <span>Book<br>now</span>
+      </a>
+      <div class="frame shape-circle"><span class="pic">
+        <span class="slot"><b>Photo</b>img/hero-circle.jpg</span>
+        <img src="img/hero-circle.jpg" alt="Close up of a fresh silk press by Naomi" onerror="this.remove()">
+      </span></div>
+      <div class="frame shape-arch"><span class="pic">
+        <span class="slot"><b>Photo</b>img/hero-arch.jpg</span>
+        <img src="img/hero-arch.jpg" alt="Client showing a finished style from Hair by Naomi" onerror="this.remove()">
+      </span></div>
+      <div class="frame shape-oct"><span class="pic">
+        <span class="slot"><b>Photo</b>img/hero-octagon.jpg</span>
+        <img src="img/hero-octagon.jpg" alt="Knotless braids finished in the Miami studio" onerror="this.remove()">
+      </span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TICKER ===== -->
+<div class="ticker" aria-label="Services: silk press, knotless braids, sew-ins, wig installs, loc retwist, color, trims, ponytails">
+  <div class="ticker-track" aria-hidden="true">
+    <ul><li>Silk press</li><li>Knotless braids</li><li>Sew-ins</li><li>Wig installs</li><li>Loc retwist</li><li>Color</li><li>Trims</li><li>Sleek ponytails</li></ul>
+    <ul><li>Silk press</li><li>Knotless braids</li><li>Sew-ins</li><li>Wig installs</li><li>Loc retwist</li><li>Color</li><li>Trims</li><li>Sleek ponytails</li></ul>
+  </div>
+</div>
+
+<!-- ===== THE LOOKS ===== -->
+<section id="looks" aria-labelledby="looksTitle">
+  <div class="wrap">
+    <h2 class="h2" id="looksTitle">The Looks<span class="script" aria-hidden="true">fresh out the chair</span></h2>
+    <p class="lede">Recent work from the chair. Screenshot your favorite and bring it to your appointment.</p>
+    <div class="looks-grid">
+      <!-- EDIT: look names and notes -->
+      <div class="look"><figure>
+        <div class="frame shape-arch"><span class="pic"><span class="slot"><b>Photo</b>img/look-1.jpg</span><img src="img/look-1.jpg" alt="Silk press, bone straight with a soft bend" loading="lazy" onerror="this.remove()"></span></div>
+        <figcaption><strong>Silk press</strong><span>Bone straight, soft bend at the ends</span></figcaption>
+      </figure></div>
+      <div class="look"><figure>
+        <div class="frame shape-circle"><span class="pic"><span class="slot"><b>Photo</b>img/look-2.jpg</span><img src="img/look-2.jpg" alt="Waist length knotless braids" loading="lazy" onerror="this.remove()"></span></div>
+        <figcaption><strong>Knotless braids</strong><span>Small, waist length, beads optional</span></figcaption>
+      </figure></div>
+      <div class="look"><figure>
+        <div class="frame shape-oct"><span class="pic"><span class="slot"><b>Photo</b>img/look-3.jpg</span><img src="img/look-3.jpg" alt="Copper color on natural curls" loading="lazy" onerror="this.remove()"></span></div>
+        <figcaption><strong>Copper color</strong><span>Single process on natural curls</span></figcaption>
+      </figure></div>
+      <div class="look"><figure>
+        <div class="frame shape-oct"><span class="pic"><span class="slot"><b>Photo</b>img/look-4.jpg</span><img src="img/look-4.jpg" alt="Sew-in with a deep side part" loading="lazy" onerror="this.remove()"></span></div>
+        <figcaption><strong>Sew-in</strong><span>Leave out, deep side part</span></figcaption>
+      </figure></div>
+      <div class="look"><figure>
+        <div class="frame shape-arch"><span class="pic"><span class="slot"><b>Photo</b>img/look-5.jpg</span><img src="img/look-5.jpg" alt="Sleek high ponytail with swoop" loading="lazy" onerror="this.remove()"></span></div>
+        <figcaption><strong>Sleek ponytail</strong><span>High, long, with a swoop</span></figcaption>
+      </figure></div>
+      <div class="look"><figure>
+        <div class="frame shape-circle"><span class="pic"><span class="slot"><b>Photo</b>img/look-6.jpg</span><img src="img/look-6.jpg" alt="Fresh loc retwist with a barrel style" loading="lazy" onerror="this.remove()"></span></div>
+        <figcaption><strong>Loc retwist</strong><span>Retwist and barrel style</span></figcaption>
+      </figure></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOURS AND CONTACT ===== -->
+<section class="hours" id="hours" aria-labelledby="hoursTitle">
+  <div class="wrap hours-grid">
+    <div>
+      <h2 class="h2" id="hoursTitle">Hours<span class="script" aria-hidden="true">by appointment</span></h2>
+      <!-- EDIT: hours -->
+      <table>
+        <caption style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Opening hours</caption>
+        <tbody>
+          <tr class="closed"><th scope="row">Monday</th><td>Closed</td></tr>
+          <tr><th scope="row">Tuesday</th><td>9am to 6pm</td></tr>
+          <tr><th scope="row">Wednesday</th><td>9am to 6pm</td></tr>
+          <tr><th scope="row">Thursday</th><td>10am to 8pm</td></tr>
+          <tr><th scope="row">Friday</th><td>8am to 8pm</td></tr>
+          <tr><th scope="row">Saturday</th><td>7am to 5pm</td></tr>
+          <tr class="closed"><th scope="row">Sunday</th><td>Closed</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h2 class="h2">Find me<span class="script" aria-hidden="true">say hey</span></h2>
+      <!-- EDIT: contact details -->
+      <ul class="contact-list">
+        <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
+          <div><small>Studio</small><a href="https://maps.google.com/?q=Miami+FL">Your street address, Miami, FL</a></div></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span>
+          <div><small>Call or text</small><a href="tel:+13055550123">(305) 555-0123</a></div></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></span>
+          <div><small>Instagram</small><a href="https://instagram.com/">@hairbynaomi</a></div></li>
+      </ul>
+      <a class="btn" href="#book">Pick a day</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MEET THE CEO ===== -->
+<section class="ceo" id="ceo" aria-labelledby="ceoTitle">
+  <div class="wrap ceo-grid">
+    <div class="frame shape-arch"><span class="pic">
+      <span class="slot"><b>Photo</b>img/ceo.jpg</span>
+      <img src="img/ceo.jpg" alt="Naomi, owner and lead stylist of Hair by Naomi" loading="lazy" onerror="this.remove()">
+    </span></div>
+    <div class="ceo-copy">
+      <h2 class="h2" id="ceoTitle">Meet the CEO<span class="script" aria-hidden="true">hey, I'm Naomi</span></h2>
+      <!-- EDIT: owner bio -->
+      <p class="first">I have been doing hair in Miami for over ten years, starting in my mom's kitchen in Little Haiti and now in my own studio.</p>
+      <p>Healthy hair comes first in this chair. I will tell you the truth about what your hair can handle, and then we will make it look amazing. Every appointment is one on one, so you get my full attention from shampoo to final photo.</p>
+      <p class="sign">Naomi</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BOOKING POLICIES ===== -->
+<section class="policies" id="policies" aria-labelledby="polTitle">
+  <div class="wrap">
+    <h2 class="h2" id="polTitle">Policies<span class="script" aria-hidden="true">read before you book</span></h2>
+    <p class="lede">Booking means you agree to these. They keep the schedule fair for everyone.</p>
+    <!-- EDIT: amounts and time windows -->
+    <div class="policy-grid">
+      <article class="policy policy--deposit">
+        <span class="tag">$30</span>
+        <h3>Deposit</h3>
+        <p>A $30 non-refundable deposit holds your spot and goes toward your service total.</p>
+      </article>
+      <article class="policy">
+        <span class="tag">48h</span>
+        <h3>Reschedule</h3>
+        <p>Reschedule once with at least 48 hours notice and your deposit moves with you.</p>
+      </article>
+      <article class="policy">
+        <span class="tag">15m</span>
+        <h3>Late arrival</h3>
+        <p>15 minutes late adds a $20 fee. After 20 minutes the appointment is cancelled.</p>
+      </article>
+      <article class="policy">
+        <span class="tag">24h</span>
+        <h3>Cancel</h3>
+        <p>Cancelling inside 24 hours or not showing up means the deposit is kept.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BEFORE YOUR APPOINTMENT ===== -->
+<section class="prep" aria-labelledby="prepTitle">
+  <div class="wrap check-grid">
+    <div>
+      <h2 class="h2" id="prepTitle">Before you come<span class="script" aria-hidden="true">checklist</span></h2>
+      <p class="lede">Doing these first means more time on the look and less time waiting.</p>
+      <a class="btn btn--ghost" href="#book">Got it, take me to booking</a>
+    </div>
+    <!-- EDIT: checklist -->
+    <ul class="checklist">
+      <li><div><strong>Come with clean, detangled hair</strong><span>Unless you booked a wash. Product buildup slows everything down.</span></div></li>
+      <li><div><strong>Bring your inspo photo</strong><span>One or two pictures of the exact look you want.</span></div></li>
+      <li><div><strong>Bring your hair for braids and installs</strong><span>I will text you the brand and how many packs to buy.</span></div></li>
+      <li><div><strong>Come alone</strong><span>No extra guests or kids in the studio, please.</span></div></li>
+      <li><div><strong>Arrive 5 minutes early</strong><span>Text me when you are outside and I will let you in.</span></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== BOOKING CALENDAR ===== -->
+<section class="book" id="book" aria-labelledby="bookTitle">
+  <div class="wrap">
+    <h2 class="h2" id="bookTitle">Book now<span class="script" aria-hidden="true">pick your day</span></h2>
+    <p class="lede">Select your service below, choose a time, and pay your deposit to lock it in.</p>
+    <div class="cal-box">
+      <!--
+        TODO: GHL CALENDAR
+        Replace the whole .cal-placeholder div below with the embed code
+        copied from GHL > Calendars > Calendar Settings > (your calendar) > Share > Embed Code.
+        It is an iframe pointing at your booking widget URL plus a
+        <script src=".../form_embed.js"></script> line. Paste both exactly
+        as GHL gives them. Do not type or guess the calendar ID.
+        Give the iframe style="width:100%;min-height:640px;border:0".
+      -->
+      <div class="cal-placeholder">
+        <span class="big">Calendar goes here</span>
+        <p>Your GHL booking calendar will load in this box.</p>
+        <div class="cal-steps"><span>1. Pick a service</span><span>2. Pick a time</span><span>3. Pay deposit</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== THANK YOU ===== -->
+<section class="thanks" aria-labelledby="tyTitle">
+  <div class="wrap">
+    <h2 class="ty" id="tyTitle">THANK YOU</h2>
+    <p class="ty-script">see you in the chair</p>
+    <p>Your confirmation text and email are on the way. Questions before your appointment? Text me any time.</p>
+    <a class="btn" href="sms:+13055550123">Text Naomi</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; <span id="yr">2026</span> Hair by Naomi, Miami FL</span>
+    <a href="#policies">Booking policies</a>
+  </div>
+</footer>
+
+<div class="mbar">
+  <span>Hair by Naomi</span>
+  <a class="btn" href="#book">Book now</a>
+</div>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  /* ===== PREVIEW BAR script (delete with the bar) ===== */
+  (function(){
+    var root = document.documentElement;
+    var t = document.getElementById('pvTheme'), f = document.getElementById('pvFont');
+    if(!t || !f) return;
+    try{
+      var st = localStorage.getItem('hbn-theme'), sf = localStorage.getItem('hbn-font');
+      if(st){root.dataset.theme = st;}
+      if(sf){root.dataset.font = sf;}
+    }catch(e){}
+    var q = new URLSearchParams(location.search);
+    if(q.get('theme')) root.dataset.theme = q.get('theme');
+    if(q.get('font')) root.dataset.font = q.get('font');
+    t.value = root.dataset.theme; f.value = root.dataset.font;
+    t.onchange = function(){root.dataset.theme = t.value; try{localStorage.setItem('hbn-theme', t.value)}catch(e){}};
+    f.onchange = function(){root.dataset.font = f.value; try{localStorage.setItem('hbn-font', f.value)}catch(e){}};
+    document.getElementById('pvHide').onclick = function(){document.getElementById('pv').remove()};
+  })();
+</script>
+</body>
+</html>

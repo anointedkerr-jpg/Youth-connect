@@ -222,14 +222,14 @@ section{padding:72px 0}
 
 /* Star badge */
 .badge{
-  position:absolute;right:-6px;top:-34px;width:118px;height:118px;z-index:3;
+  position:absolute;right:-4px;top:-84px;width:100px;height:100px;z-index:3;
   display:grid;place-items:center;text-decoration:none;
 }
 .badge svg{position:absolute;inset:0;width:100%;height:100%;animation:spin 14s linear infinite}
 .badge .star{fill:var(--pink)}
 .badge span{
   position:relative;font-family:var(--f-head);font-weight:var(--head-weight);text-transform:uppercase;
-  color:var(--on-pink);font-size:1.05rem;line-height:.95;text-align:center;letter-spacing:.04em;
+  color:var(--on-pink);font-size:.95rem;line-height:.95;text-align:center;letter-spacing:.04em;
 }
 .badge:hover svg{animation-duration:4s}
 @keyframes spin{to{transform:rotate(360deg)}}
@@ -375,7 +375,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
   .policy-grid{grid-template-columns:1fr 1fr}
   .hours-grid,.check-grid{grid-template-columns:1fr 1fr;gap:64px}
   .ceo-grid{grid-template-columns:.8fr 1.2fr;gap:64px}
-  .badge{width:140px;height:140px;right:-10px}
+  .badge{width:130px;height:130px;right:-6px;top:-100px}
   .badge span{font-size:1.25rem}
 }
 @media (min-width:1024px){
@@ -405,28 +405,33 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
 }
 
 /* ===== PREVIEW BAR styles (delete with the bar) ===== */
-@media (min-width:1024px){.pv{bottom:16px !important}}
-@media (max-width:719px){.pv label{display:none}.pv{flex-wrap:nowrap}}
 .pv{
-  position:fixed;left:12px;bottom:84px;z-index:60;
-  display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:center;
-  padding:6px;border-radius:14px;background:#111;color:#fff;font:600 12px/1 system-ui,sans-serif;
-  box-shadow:0 8px 24px rgba(0,0,0,.4);max-width:calc(100% - 24px);
+  position:fixed;right:12px;top:76px;z-index:60;
+  display:flex;flex-direction:column;align-items:flex-end;gap:8px;
+  font:600 14px/1 system-ui,sans-serif;color:#fff;
 }
-.pv label{padding:0 4px;opacity:.75}
-.pv select{font:inherit;padding:8px;border-radius:8px;border:0;min-height:32px}
-.pv button{font:inherit;background:transparent;color:#fff;border:0;padding:8px;cursor:pointer;opacity:.75}
+.pv-toggle{
+  min-height:40px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.25);
+  background:#111;color:#fff;font:inherit;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.35);
+}
+.pv-panel{
+  display:none;flex-direction:column;gap:8px;padding:10px;border-radius:14px;background:#111;
+  box-shadow:0 8px 24px rgba(0,0,0,.4);
+}
+.pv.open .pv-panel{display:flex}
+.pv label{display:flex;flex-direction:column;gap:5px;font-size:12px;opacity:.85}
+.pv select{font-size:16px;padding:8px;border-radius:8px;border:0;min-height:40px;min-width:180px}
 </style>
 </head>
 <body>
 
 <!-- ===== PREVIEW BAR: preview only, delete this block before going live ===== -->
 <div class="pv" id="pv" aria-label="Template preview controls">
-  <label for="pvTheme">Colorway</label>
-  <select id="pvTheme"><option value="wine">Wine + Lime</option><option value="cherry">Cream + Cherry</option></select>
-  <label for="pvFont">Fonts</label>
-  <select id="pvFont"><option value="bold">Bowlby + Anton</option><option value="lux">Playfair</option><option value="play">Zen Dots + Fredoka</option></select>
-  <button type="button" id="pvHide" aria-label="Hide preview bar">Hide</button>
+  <button type="button" class="pv-toggle" id="pvToggle" aria-expanded="false" aria-controls="pvPanel">Preview style</button>
+  <div class="pv-panel" id="pvPanel">
+    <label>Colorway<select id="pvTheme"><option value="wine">Wine + Lime</option><option value="cherry">Cream + Cherry</option></select></label>
+    <label>Fonts<select id="pvFont"><option value="bold">Bowlby + Anton</option><option value="lux">Playfair</option><option value="play">Zen Dots + Fredoka</option></select></label>
+  </div>
 </div>
 <!-- ===== END PREVIEW BAR ===== -->
 
@@ -687,7 +692,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
     t.value = root.dataset.theme; f.value = root.dataset.font;
     t.onchange = function(){root.dataset.theme = t.value; try{localStorage.setItem('hbn-theme', t.value)}catch(e){}};
     f.onchange = function(){root.dataset.font = f.value; try{localStorage.setItem('hbn-font', f.value)}catch(e){}};
-    document.getElementById('pvHide').onclick = function(){document.getElementById('pv').remove()};
+    var pv = document.getElementById('pv'), tg = document.getElementById('pvToggle');
+    tg.onclick = function(){var o = pv.classList.toggle('open'); tg.setAttribute('aria-expanded', o); tg.textContent = o ? 'Close' : 'Preview style';};
   })();
 </script>
 </body>
